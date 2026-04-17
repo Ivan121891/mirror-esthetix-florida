@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
+  <link rel="apple-touch-icon" sizes="192x192" href="data:image/png;base64,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"/>
   <meta name="description" content="Mirror Esthetics – Premium skincare studio in Gainesville, FL. Advanced facials, body sculpting, and luxury skincare products."/>
-  <link rel="canonical" href="https://mirrorestheticsfl.com/shop-avinichi.html"/>
+  <link rel="canonical" href="https://mirrorestheticsfl.com/shop-avinichi"/>
   <meta property="og:title" content="Avinichi | Mirror Esthetics Shop"/>
-  <meta property="og:url" content="https://mirrorestheticsfl.com/shop-avinichi.html"/>
+  <meta property="og:url" content="https://mirrorestheticsfl.com/shop-avinichi"/>
   <meta property="og:site_name" content="Mirror Esthetics"/>
   <meta property="og:type" content="website"/>
   <meta charset="UTF-8"/>
@@ -270,27 +273,27 @@
 <body>
 
   <header>
-    <a href="index.html" class="logo">Mirror <span>Esthetics</span></a>
+    <a href="/" class="logo">Mirror <span>Esthetics</span></a>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="/">Home</a>
       <div class="dropdown" id="shopDropdown">
         <button class="dropdown-trigger" onclick="toggleShopMenu(event)">Shop ▾</button>
         <div class="dropdown-menu" id="shopMenu">
-          <a href="shop-cbgardn.html" class="dropdown-brand-link"><span class="brand-dot" style="background:#C9956A"></span>CBGardn</a>
-          <a href="shop-emptechpro.html" class="dropdown-brand-link"><span class="brand-dot" style="background:#7B9E87"></span>EmptechPro</a>
-          <a href="shop-avinichi.html" class="dropdown-brand-link"><span class="brand-dot" style="background:#9B7BB5"></span>Avinichi</a>
-          <a href="shop-dermatech.html" class="dropdown-brand-link"><span class="brand-dot" style="background:#5B8DB8"></span>Derma Tech</a>
+          <a href="/shop-cbgardn" class="dropdown-brand-link"><span class="brand-dot" style="background:#C9956A"></span>CBGardn</a>
+          <a href="/shop-emptechpro" class="dropdown-brand-link"><span class="brand-dot" style="background:#7B9E87"></span>EmptechPro</a>
+          <a href="/shop-avinichi" class="dropdown-brand-link"><span class="brand-dot" style="background:#9B7BB5"></span>Avinichi</a>
+          <a href="/shop-dermatech" class="dropdown-brand-link"><span class="brand-dot" style="background:#5B8DB8"></span>Derma Tech</a>
         </div>
       </div>
-      <a href="index.html#treatments">Treatments</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="/#treatments">Treatments</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
     </nav>
     <button class="cart-icon-btn" onclick="openCartDrawer()" aria-label="Shopping Cart">
       <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
       <span id="cart-badge"></span>
     </button>
-    <a href="contact.html" class="btn-book">Book Now</a>
+    <a href="/contact" class="btn-book">Book Now</a>
   </header>
 
   <div class="page-banner">
@@ -611,7 +614,7 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo">Mirror <span>Esthetics</span></a>
+        <a href="/" class="logo">Mirror <span>Esthetics</span></a>
         <p>Premium skincare studio in Gainesville, FL. Where radiant beauty meets the art and science of skin wellness.</p>
         <div class="footer-social">
           <a href="#" class="social-btn">f</a><a href="#" class="social-btn">in</a>
@@ -620,32 +623,32 @@
       </div>
       <div class="footer-col">
         <h4>Shop</h4>
-        <a href="shop-cbgardn.html">CBGardn</a>
-        <a href="shop-emptechpro.html">EmptechPro</a>
-        <a href="shop-avinichi.html">Avinichi</a>
-        <a href="shop-dermatech.html">Derma Tech</a>
+        <a href="/shop-cbgardn">CBGardn</a>
+        <a href="/shop-emptechpro">EmptechPro</a>
+        <a href="/shop-avinichi">Avinichi</a>
+        <a href="/shop-dermatech">Derma Tech</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="about.html">Our Story</a>
-        <a href="index.html#treatments">Treatments</a>
-        <a href="contact.html">Contact</a>
+        <a href="/about">Our Story</a>
+        <a href="/#treatments">Treatments</a>
+        <a href="/contact">Contact</a>
       </div>
       <div class="footer-contact footer-col">
         <h4>Visit Us</h4>
         <p><span>📍</span>6419 W Newberry Rd, Gainesville, FL 32605</p>
         <p><span>📞</span>(352) 224-8201</p>
         <p><span>✉️</span>Mirrorestheticsg1@gmail.com</p>
-        <p><span>🕐</span>Mon–Sat: 9am – 6pm</p>
+        <p><span>🕙</span>Sun: 11AM–6PM</p><p><span style="opacity:0">🕙</span>Mon–Thu: 10AM–7PM</p><p><span style="opacity:0">🕙</span>Fri: 10AM–5PM &nbsp;|&nbsp; Sat: Closed</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2024 Mirror Esthetics. All rights reserved. &nbsp;·&nbsp; Financing by <a href="https://www.affirm.com" target="_blank" style="color:rgba(255,255,255,.4)">Affirm</a></span>
+      <span>© 2025 Mirror Esthetics. All rights reserved. &nbsp;·&nbsp; Financing by <a href="https://www.affirm.com" target="_blank" style="color:rgba(255,255,255,.4)">Affirm</a></span>
       <div class="footer-bottom-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="shipping.html">Shipping</a>
-        <a href="refund.html">Refunds</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/shipping">Shipping</a>
+        <a href="/refund">Refunds</a>
       </div>
     </div>
   </footer>
