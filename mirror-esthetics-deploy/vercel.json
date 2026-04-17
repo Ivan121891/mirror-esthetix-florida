@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/home", "destination": "/tuapelle-clone.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/refund", "destination": "/refund.html" },
+    { "source": "/shipping", "destination": "/shipping.html" },
+    { "source": "/shop/cbgardn", "destination": "/shop-cbgardn.html" },
+    { "source": "/shop/avinichi", "destination": "/shop-avinichi.html" },
+    { "source": "/shop/dermatech", "destination": "/shop-dermatech.html" },
+    { "source": "/shop/emptechpro", "destination": "/shop-emptechpro.html" }
+  ]
+}
