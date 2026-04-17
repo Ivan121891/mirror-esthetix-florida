@@ -943,6 +943,43 @@
     .sv-book-btn{flex:1;padding:.9rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;text-align:center;text-decoration:none;display:block}
     .sv-book-btn:hover{background:var(--brown-dark)}
 
+    
+    /* ── PRODUCT DETAIL MODAL (Homepage) ── */
+    #pd-modal{position:fixed;inset:0;z-index:1050;display:none;align-items:center;justify-content:center;padding:16px}
+    #pd-modal.open{display:flex}
+    #pd-overlay{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+    #pd-box{position:relative;background:#fff;border-radius:24px;width:100%;max-width:900px;max-height:92vh;overflow-y:auto;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+    #pd-close{position:absolute;top:16px;right:16px;background:#f5f0ea;border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .2s}
+    #pd-close:hover{background:var(--accent);color:#fff}
+    .pd-inner{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+    .pd-img-col{background:var(--cream);border-radius:24px 0 0 24px;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:320px}
+    .pd-img-col img{width:100%;height:100%;object-fit:cover}
+    .pd-info-col{padding:2rem 2rem 2rem 1.75rem;overflow-y:auto;display:flex;flex-direction:column;gap:.6rem}
+    .pd-cat{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent)}
+    .pd-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--brown-dark);line-height:1.2;margin:0}
+    .pd-price{font-size:1.4rem;font-weight:700;color:var(--brown-dark)}
+    .pd-affirm-line{font-size:.78rem;color:var(--text-light)}
+    .pd-affirm-line .affirm-logo{font-weight:900;font-size:.8rem;color:#4a4af4;letter-spacing:-.5px}
+    .pd-desc{font-size:.875rem;color:var(--text-light);line-height:1.7;border-top:1px solid var(--cream-dark);padding-top:.75rem;margin-top:.2rem}
+    .pd-section-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--brown);margin-top:.75rem;margin-bottom:.3rem}
+    .pd-benefits{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.3rem}
+    .pd-benefits li{font-size:.83rem;color:var(--text-light);display:flex;gap:.5rem;align-items:flex-start}
+    .pd-benefits li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+    .pd-steps{list-style:none;padding:0;margin:0;counter-reset:step;display:flex;flex-direction:column;gap:.3rem}
+    .pd-steps li{font-size:.83rem;color:var(--text-light);display:flex;gap:.6rem;align-items:flex-start;counter-increment:step}
+    .pd-steps li::before{content:counter(step);background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+    .pd-meta-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.25rem}
+    .pd-meta-tag{background:var(--cream);border-radius:50px;padding:.25rem .85rem;font-size:.75rem;color:var(--brown);font-weight:500}
+    .pd-footer-bar{padding:1.25rem 2rem;border-top:1px solid var(--cream-dark);display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+    .pd-add-btn{flex:1;padding:.85rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;letter-spacing:.3px;white-space:nowrap}
+    .pd-add-btn:hover{background:var(--brown-dark)}
+    .btn-view-details{background:none;border:1.5px solid var(--accent);color:var(--accent);padding:.45rem 1rem;border-radius:8px;font-size:.8rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .btn-view-details:hover{background:var(--accent);color:#fff}
+    @media(max-width:680px){
+      .pd-inner{grid-template-columns:1fr}
+      .pd-img-col{border-radius:24px 24px 0 0;min-height:220px;max-height:240px}
+      #pd-box{max-height:95vh}
+    }
     </style>
 </head>
 <body>
@@ -1196,7 +1233,7 @@
         <h2 class="section-title">Our <em>featured</em> products</h2>
         <p class="section-sub">Handpicked formulas that our clients love most — natural, effective, and luxurious.</p>
       </div>
-      <a href="#" class="btn-outline" style="align-self:flex-end;">View All Products →</a>
+      <a href="/shop-cbgardn" class="btn-outline" style="align-self:flex-end;">View All Products →</a>
     </div>
     <div class="products-grid">
       <div class="product-card">
@@ -1211,6 +1248,7 @@
           <div class="product-footer">
             <span class="product-price">$600</span>
             <button class="btn-add" onclick="addToCart('Hydrating Multifruit C-Serum', '$600', 'Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Hydrating Multifruit C-Serum')" style="margin-top:.5rem">View Details</button>
           </div>
         </div>
       </div>
@@ -1226,6 +1264,7 @@
           <div class="product-footer">
             <span class="product-price">$350</span>
             <button class="btn-add" onclick="addToCart('Noni Morning Glow', '$350', 'CBGardn')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Noni Morning Glow')" style="margin-top:.5rem">View Details</button>
           </div>
         </div>
       </div>
@@ -1240,6 +1279,7 @@
           <div class="product-footer">
             <span class="product-price">$250</span>
             <button class="btn-add" onclick="addToCart('Noni Mousse Cleanser', '$250', 'CBGardn')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Noni Mousse Cleanser')" style="margin-top:.5rem">View Details</button>
           </div>
         </div>
       </div>
@@ -1394,41 +1434,253 @@
   </footer>
 
   <script>
-    // Smooth active link highlight on scroll
-    const sections = document.querySelectorAll('section[id], footer[id]');
-    const navLinks = document.querySelectorAll('nav a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
-      });
-      navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--brown)' : '';
-      });
-    });
+(function(){
+  var CART_KEY='me_cart';
+  var coStep=1, coPayMethod='affirm';
 
-    // Add to cart feedback
-    document.querySelectorAll('.btn-add').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const orig = this.textContent;
-        this.textContent = '✓ Added!';
-        this.style.background = 'var(--brown-dark)';
-        this.style.color = 'var(--white)';
-        setTimeout(() => {
-          this.textContent = orig;
-          this.style.background = '';
-          this.style.color = '';
-        }, 1800);
-      });
-    });
+  function getCart(){return JSON.parse(localStorage.getItem(CART_KEY)||'[]');}
+  function saveCart(c){localStorage.setItem(CART_KEY,JSON.stringify(c));updateCartUI();}
 
-    // Newsletter feedback
-    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-      const btn = this.querySelector('button');
-      btn.textContent = '✓ Subscribed!';
-      setTimeout(() => btn.textContent = 'Subscribe', 2500);
+  window.addToCart=function(name,price,brand){
+    var cart=getCart();
+    var item=cart.find(function(i){return i.name===name;});
+    if(item){item.qty++;}else{cart.push({name:name,price:price,brand:brand,qty:1});}
+    saveCart(cart); openCartDrawer(); showToast(name+' added to cart');
+  };
+  window.removeFromCart=function(name){saveCart(getCart().filter(function(i){return i.name!==name;}));};
+  window.updateQty=function(name,delta){
+    var cart=getCart();
+    var item=cart.find(function(i){return i.name===name;});
+    if(!item)return;
+    item.qty+=delta;
+    if(item.qty<=0){saveCart(cart.filter(function(i){return i.name!==name;}));}else{saveCart(cart);}
+  };
+  function numPrice(s){return parseFloat((s||'0').replace(/[^0-9.]/g,''))||0;}
+  function getSubtotal(cart){return cart.reduce(function(s,i){return s+numPrice(i.price)*i.qty;},0);}
+
+  function updateCartUI(){
+    var cart=getCart();
+    var total=cart.reduce(function(s,i){return s+i.qty;},0);
+    var badge=document.getElementById('cart-badge');
+    if(badge){badge.textContent=total;badge.style.display=total>0?'flex':'none';}
+    renderCartItems();
+  }
+
+  function renderCartItems(){
+    var cart=getCart();
+    var container=document.getElementById('cart-items');
+    if(!container)return;
+    var tRow=document.getElementById('cart-total-row');
+    var cBtn=document.getElementById('cart-checkout-btn');
+    if(!cart.length){
+      container.innerHTML='<div class="cart-empty"><svg viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><p>Your cart is empty</p></div>';
+      if(tRow)tRow.style.display='none'; if(cBtn)cBtn.style.display='none'; return;
+    }
+    if(tRow)tRow.style.display='flex'; if(cBtn)cBtn.style.display='block';
+    var sub=getSubtotal(cart);
+    container.innerHTML=cart.map(function(item){
+      return '<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">'+item.name+'</div><div class="cart-item-brand">'+item.brand+'</div><div class="cart-item-price">'+item.price+'</div></div>'
+        +'<div class="cart-item-controls">'
+        +'<button onclick="updateQty(\''+item.name+'\',-1)">−</button>'
+        +'<span>'+item.qty+'</span>'
+        +'<button onclick="updateQty(\''+item.name+'\',1)">+</button>'
+        +'<button class="remove-btn" onclick="removeFromCart(\''+item.name+'\')">✕</button>'
+        +'</div></div>';
+    }).join('');
+    var s=document.getElementById('cart-subtotal'); if(s)s.textContent='$'+sub.toFixed(2);
+  }
+
+  function renderOrderSummary(suffix){
+    var sfx=suffix||'';
+    var cart=getCart();
+    var sub=getSubtotal(cart);
+    var ship=sub>0?15:0;
+    var items=document.getElementById('os-items'+sfx);
+    if(items)items.innerHTML=cart.map(function(i){
+      return '<div class="os-item"><span>'+i.name+' ×'+i.qty+'</span><span>$'+(numPrice(i.price)*i.qty).toFixed(2)+'</span></div>';
+    }).join('');
+    var es=document.getElementById('os-subtotal'+sfx); if(es)es.textContent='$'+sub.toFixed(2);
+    var sh=document.getElementById('os-ship'+sfx); if(sh)sh.textContent='$'+ship.toFixed(2);
+    var et=document.getElementById('os-total'+sfx); if(et)et.textContent='$'+(sub+ship).toFixed(2);
+  }
+
+  window.openCartDrawer=function(){
+    document.getElementById('cart-drawer').classList.add('open');
+    document.getElementById('cart-overlay').classList.add('open');
+  };
+  window.closeCartDrawer=function(){
+    document.getElementById('cart-drawer').classList.remove('open');
+    document.getElementById('cart-overlay').classList.remove('open');
+  };
+
+  window.openCheckout=function(){
+    closeCartDrawer();
+    coStep=1; coPayMethod='affirm';
+    showStep(1);
+    renderOrderSummary(''); renderOrderSummary('-2');
+    document.getElementById('checkout-modal').classList.add('open');
+  };
+  window.closeCheckout=function(){
+    document.getElementById('checkout-modal').classList.remove('open');
+  };
+
+  function showStep(n){
+    coStep=n;
+    [1,2,3].forEach(function(i){
+      var p=document.getElementById('co-panel-'+i);
+      if(p)p.classList.toggle('active',i===n);
     });
-  </script>
+    [1,2,3].forEach(function(i){
+      var num=document.getElementById('step-num-'+i);
+      var lbl=document.getElementById('step-lbl-'+i);
+      if(!num)return;
+      num.className='step-num '+(i<n?'done':(i===n?'active':'inactive'));
+      if(lbl)lbl.className='step-label'+(i===n?' active':'');
+      if(i<n&&num)num.textContent='✓'; else if(num)num.textContent=String(i);
+    });
+    var back=document.getElementById('co-back-btn');
+    if(back)back.style.display=(n>1&&n<3)?'block':'none';
+    var next=document.getElementById('co-next-btn');
+    if(next){
+      if(n===3){next.style.display='none';}
+      else if(n===2){next.style.display='block';updateNextBtn();}
+      else{next.textContent='Continue →';next.className='co-btn-next';next.style.display='block';}
+    }
+    var titles=['','Your Information','Payment','Order Confirmed'];
+    var t=document.getElementById('checkout-modal-title');
+    if(t)t.textContent=titles[n]||'Checkout';
+  }
+
+  function updateNextBtn(){
+    var next=document.getElementById('co-next-btn');
+    if(!next)return;
+    if(coPayMethod==='affirm'){next.textContent='Continue with Affirm →';next.className='co-btn-next affirm-btn';}
+    else{next.textContent='Place Order →';next.className='co-btn-next';}
+  }
+
+  window.selectPayMethod=function(method){
+    coPayMethod=method;
+    var a=document.getElementById('pm-affirm');
+    var c=document.getElementById('pm-card');
+    var af=document.getElementById('affirm-info');
+    var cf=document.getElementById('card-form');
+    if(a)a.className='pay-method'+(method==='affirm'?' selected':'');
+    if(c)c.className='pay-method'+(method==='card'?' selected-card':'');
+    if(af)af.className='affirm-info-box'+(method==='affirm'?' visible':'');
+    if(cf)cf.className='card-form'+(method==='card'?' visible':'');
+    updateNextBtn();
+  };
+
+  window.checkoutNext=function(){
+    if(coStep===1){
+      var req=['co-fname','co-lname','co-email','co-addr','co-city','co-state','co-zip'];
+      var ok=req.every(function(id){var el=document.getElementById(id);return el&&el.value.trim()!=='';}); 
+      if(!ok){alert('Please fill in all required fields.');return;}
+      renderOrderSummary('-2'); showStep(2);
+    } else if(coStep===2){
+      if(coPayMethod==='card'){
+        var cn=document.getElementById('co-card');
+        var ce=document.getElementById('co-exp');
+        var cv=document.getElementById('co-cvv');
+        var cc=document.getElementById('co-cname');
+        if(!cn||cn.value.replace(/\s/g,'').length<13){alert('Please enter a valid card number.');return;}
+        if(!ce||ce.value.length<4){alert('Please enter a valid expiry date.');return;}
+        if(!cv||cv.value.length<3){alert('Please enter a valid CVV.');return;}
+        if(!cc||!cc.value.trim()){alert('Please enter the name on your card.');return;}
+      }
+      placeOrderFinal();
+    }
+  };
+
+  window.checkoutBack=function(){if(coStep===2)showStep(1);};
+
+  function placeOrderFinal(){
+    var orderNum='ME-'+Math.floor(10000+Math.random()*90000);
+    var email=document.getElementById('co-email');
+    var fname=document.getElementById('co-fname');
+    var lname=document.getElementById('co-lname');
+    var addr=document.getElementById('co-addr');
+    var city=document.getElementById('co-city');
+    var state=document.getElementById('co-state');
+    var zip=document.getElementById('co-zip');
+    var cart=getCart(); var sub=getSubtotal(cart);
+    var emailEl=document.getElementById('confirm-email'); if(emailEl)emailEl.textContent=email?email.value:'you';
+    var numEl=document.getElementById('confirm-order-num'); if(numEl)numEl.textContent='ORDER #'+orderNum;
+    var det=document.getElementById('confirm-detail');
+    if(det){
+      var payLabel=coPayMethod==='affirm'?'Affirm Financing':'Credit / Debit Card';
+      det.innerHTML='<strong>Name:</strong> '+(fname?fname.value:'')+' '+(lname?lname.value:'')+'<br/>'
+        +'<strong>Ship to:</strong> '+(addr?addr.value:'')+', '+(city?city.value:'')+', '+(state?state.value:'')+' '+(zip?zip.value:'')+'<br/>'
+        +'<strong>Payment:</strong> '+payLabel+'<br/>'
+        +'<strong>Total:</strong> $'+(sub+15).toFixed(2)+' (incl. $15 shipping)';
+    }
+    saveCart([]); showStep(3);
+  }
+
+  window.fmtCard=function(el){var v=el.value.replace(/\D/g,'').substring(0,16);el.value=v.replace(/(.{4})/g,'$1  ').trim();};
+  window.fmtExp=function(el){var v=el.value.replace(/\D/g,'').substring(0,4);if(v.length>=3)v=v.substring(0,2)+' / '+v.substring(2);el.value=v;};
+  function showToast(msg){var t=document.getElementById('cart-toast');if(!t)return;t.textContent='🛒 '+msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);}
+
+  // ── Homepage product detail modal ──
+  var HP_PRODUCTS = [
+  {name:"Hydrating Multifruit C-Serum",price:"$600",monthly:"$60",cat:"Serum",brand:"Avinichi",
+   desc:"Brightening vitamin C serum enriched with multifruit extracts for a luminous, even complexion. A powerhouse formula that fights pigmentation and boosts radiance.",
+   benefits:["High-potency Vitamin C + multifruit complex","Fades dark spots and uneven tone","Boosts collagen production","Antioxidant protection all day"],
+   steps:["Apply 3–4 drops to cleansed face each morning","Press gently into skin — do not rub","Follow with moisturizer and SPF"],
+   skin:"All skin types, especially dull or pigmented",size:"30ml / 1 fl oz"},
+  {name:"Noni Morning Glow",price:"$350",monthly:"$35",cat:"Serum",brand:"CBGardn",
+   desc:"Revitalizing morning serum powered by noni fruit extract to energize, protect and illuminate skin from the first light of day.",
+   benefits:["Boosts radiance and skin luminosity","Protects against environmental stressors","Hydrates and plumps with lasting moisture","Evens skin tone over time"],
+   steps:["Apply 2–3 drops to cleansed face each morning","Gently press into skin using fingertips","Follow with moisturizer and SPF"],
+   skin:"All skin types, especially dull or tired skin",size:"30ml / 1 fl oz"},
+  {name:"Noni Mousse Cleanser",price:"$250",monthly:"$25",cat:"Cleanser",brand:"CBGardn",
+   desc:"Gentle foaming cleanser that removes impurities without stripping skin's natural moisture barrier. Leaves skin soft, clean and balanced.",
+   benefits:["Deep cleanses without stripping moisture","Removes makeup and SPF effectively","Leaves skin soft and never tight","pH-balanced, sulfate-free formula"],
+   steps:["Pump 1–2 pumps onto damp hands","Massage gently onto face in circular motions","Rinse thoroughly with lukewarm water"],
+   skin:"All skin types, especially dry and sensitive",size:"150ml / 5 fl oz"},
+];
+
+  window.openPD=function(name){
+    var p=HP_PRODUCTS.find(function(x){return x.name===name;});
+    if(!p)return;
+    var cards=document.querySelectorAll('.product-card');
+    var imgSrc='';
+    cards.forEach(function(card){
+      var h=card.querySelector('h3');
+      if(h&&h.textContent.trim()===name){var img=card.querySelector('img');if(img)imgSrc=img.src;}
+    });
+    document.getElementById('pd-img').src=imgSrc;
+    document.getElementById('pd-img').alt=name;
+    document.getElementById('pd-cat').textContent=p.cat;
+    document.getElementById('pd-name').textContent=p.name;
+    document.getElementById('pd-price').textContent=p.price;
+    document.getElementById('pd-monthly').textContent=p.monthly;
+    document.getElementById('pd-desc').textContent=p.desc;
+    document.getElementById('pd-skin').textContent='👤 '+p.skin;
+    document.getElementById('pd-size').textContent='📦 '+p.size;
+    var bl=document.getElementById('pd-benefits');
+    bl.innerHTML=p.benefits.map(function(b){return '<li>'+b+'</li>';}).join('');
+    var sl=document.getElementById('pd-steps');
+    sl.innerHTML=p.steps.map(function(s){return '<li>'+s+'</li>';}).join('');
+    var footer=document.getElementById('pd-footer');
+    footer.innerHTML='<button class="pd-add-btn" onclick="addToCart(\''+name+'\',\''+p.price+'\',\''+p.brand+'\');closePD()">Add to Cart</button>';
+    document.getElementById('pd-modal').classList.add('open');
+    document.body.style.overflow='hidden';
+  };
+
+  window.closePD=function(){
+    document.getElementById('pd-modal').classList.remove('open');
+    document.body.style.overflow='';
+  };
+
+  document.addEventListener('DOMContentLoaded',updateCartUI);
+  updateCartUI();
+})();
+
+function toggleShopMenu(e){e.stopPropagation();var m=document.getElementById('shopMenu');if(m)m.classList.toggle('is-open');}
+document.addEventListener('click',function(e){var d=document.getElementById('shopDropdown');var m=document.getElementById('shopMenu');if(m&&d&&!d.contains(e.target))m.classList.remove('is-open');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(window.closePD)closePD();if(window.closeCheckout)closeCheckout();if(window.closeCartDrawer)closeCartDrawer();}});
+</script>
 
 
 <!-- Cart Overlay -->
@@ -1677,5 +1929,33 @@
   </div>
 </div>
 
+
+<!-- Product Detail Modal -->
+<div id="pd-modal">
+  <div id="pd-overlay" onclick="closePD()"></div>
+  <div id="pd-box">
+    <button id="pd-close" onclick="closePD()">✕</button>
+    <div class="pd-inner">
+      <div class="pd-img-col"><img id="pd-img" src="" alt=""/></div>
+      <div class="pd-info-col">
+        <div class="pd-cat" id="pd-cat"></div>
+        <h2 class="pd-name" id="pd-name"></h2>
+        <div class="pd-price" id="pd-price"></div>
+        <div class="pd-affirm-line">As low as <span id="pd-monthly"></span>/mo with <span class="affirm-logo">affirm</span></div>
+        <p class="pd-desc" id="pd-desc"></p>
+        <div class="pd-section-lbl">Key Benefits</div>
+        <ul class="pd-benefits" id="pd-benefits"></ul>
+        <div class="pd-section-lbl">How To Use</div>
+        <ol class="pd-steps" id="pd-steps"></ol>
+        <div class="pd-section-lbl">Details</div>
+        <div class="pd-meta-row">
+          <span class="pd-meta-tag" id="pd-skin"></span>
+          <span class="pd-meta-tag" id="pd-size"></span>
+        </div>
+      </div>
+    </div>
+    <div class="pd-footer-bar" id="pd-footer"></div>
+  </div>
+</div>
 </body>
 </html>
