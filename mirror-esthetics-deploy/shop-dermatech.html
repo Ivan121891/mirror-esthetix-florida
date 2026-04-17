@@ -268,7 +268,47 @@
     .btn-back-shop:hover{background:#4A3728}
     @media(max-width:640px){.checkout-two-col{flex-direction:column}.checkout-summary-side{width:100%}.checkout-box{border-radius:14px}}
 
-  </style>
+  
+    /* ── PRODUCT DETAIL MODAL ── */
+    #pd-modal{position:fixed;inset:0;z-index:1050;display:none;align-items:center;justify-content:center;padding:16px}
+    #pd-modal.open{display:flex}
+    #pd-overlay{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+    #pd-box{position:relative;background:#fff;border-radius:24px;width:100%;max-width:900px;max-height:92vh;overflow-y:auto;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+    #pd-close{position:absolute;top:16px;right:16px;background:#f5f0ea;border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .2s}
+    #pd-close:hover{background:var(--accent);color:#fff}
+    .pd-inner{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+    .pd-img-col{background:var(--cream);border-radius:24px 0 0 24px;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:320px}
+    .pd-img-col img{width:100%;height:100%;object-fit:cover}
+    .pd-info-col{padding:2rem 2rem 2rem 1.75rem;overflow-y:auto;display:flex;flex-direction:column;gap:.6rem}
+    .pd-cat{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent)}
+    .pd-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--brown-dark);line-height:1.2;margin:0}
+    .pd-price{font-size:1.4rem;font-weight:700;color:var(--brown-dark)}
+    .pd-affirm{font-size:.78rem;color:var(--text-light)}
+    .pd-affirm .affirm-logo{font-weight:900;font-size:.8rem;color:#4a4af4;letter-spacing:-.5px}
+    .pd-desc{font-size:.875rem;color:var(--text-light);line-height:1.7;border-top:1px solid var(--cream-dark);padding-top:.75rem;margin-top:.2rem}
+    .pd-section{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--brown);margin-top:.75rem;margin-bottom:.3rem}
+    .pd-benefits{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.3rem}
+    .pd-benefits li{font-size:.83rem;color:var(--text-light);display:flex;gap:.5rem;align-items:flex-start}
+    .pd-benefits li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+    .pd-steps{list-style:none;padding:0;margin:0;counter-reset:step;display:flex;flex-direction:column;gap:.3rem}
+    .pd-steps li{font-size:.83rem;color:var(--text-light);display:flex;gap:.6rem;align-items:flex-start;counter-increment:step}
+    .pd-steps li::before{content:counter(step);background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+    .pd-meta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.25rem}
+    .pd-meta-tag{background:var(--cream);border-radius:50px;padding:.25rem .85rem;font-size:.75rem;color:var(--brown);font-weight:500}
+    .pd-footer{padding:1.25rem 2rem;border-top:1px solid var(--cream-dark);display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+    .pd-add-btn{flex:1;padding:.85rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;letter-spacing:.3px;white-space:nowrap}
+    .pd-add-btn:hover{background:var(--brown-dark)}
+    .pd-book-btn{flex:1;padding:.85rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;letter-spacing:.3px;text-align:center;text-decoration:none;display:block;white-space:nowrap}
+    .pd-book-btn:hover{background:var(--brown-dark)}
+    .btn-view-details{background:none;border:1.5px solid var(--accent);color:var(--accent);padding:.45rem 1rem;border-radius:8px;font-size:.8rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .btn-view-details:hover{background:var(--accent);color:#fff}
+    @media(max-width:680px){
+      .pd-inner{grid-template-columns:1fr}
+      .pd-img-col{border-radius:24px 24px 0 0;min-height:220px;max-height:240px}
+      #pd-box{max-height:95vh}
+    }
+
+    </style>
 </head>
 <body>
 
@@ -333,6 +373,7 @@
             <span class="product-price">$1,250</span>
             <span class="affirm-monthly">As low as $120/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Veluxia Gold Pro','$1,250','Derma Tech')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Veluxia Gold Pro')">View Details</button>
           </div>
         </div>
       </div>
@@ -349,6 +390,7 @@
             <span class="product-price">$980</span>
             <span class="affirm-monthly">As low as $94/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Veluxia Pro X','$980','Derma Tech')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Veluxia Pro X')">View Details</button>
           </div>
         </div>
       </div>
@@ -365,6 +407,7 @@
             <span class="product-price">$850</span>
             <span class="affirm-monthly">As low as $81/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Veluxia Neck Pro','$850','Derma Tech')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Veluxia Neck Pro')">View Details</button>
           </div>
         </div>
       </div>
@@ -381,6 +424,7 @@
             <span class="product-price">$720</span>
             <span class="affirm-monthly">As low as $69/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Veluxia RED','$720','Derma Tech')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Veluxia RED')">View Details</button>
           </div>
         </div>
       </div>
@@ -397,6 +441,7 @@
             <span class="product-price">$590</span>
             <span class="affirm-monthly">As low as $57/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('LED Eye Lift Device','$590','Derma Tech')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('LED Eye Lift Device')">View Details</button>
           </div>
         </div>
       </div>
@@ -413,6 +458,7 @@
             <span class="product-price">$680</span>
             <span class="affirm-monthly">As low as $65/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Slim Edge Pro+','$680','Derma Tech')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Slim Edge Pro+')">View Details</button>
           </div>
         </div>
       </div>
@@ -429,6 +475,7 @@
             <span class="product-price">$320</span>
             <span class="affirm-monthly">As low as $31/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Hyaluronic Activated Serum','$320','Derma Tech')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Hyaluronic Activated Serum')">View Details</button>
           </div>
         </div>
       </div>
@@ -445,6 +492,7 @@
             <span class="product-price">$195</span>
             <span class="affirm-monthly">As low as $19/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('FLEX Relief Gel Probiotic','$195','Derma Tech')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('FLEX Relief Gel Probiotic')">View Details</button>
           </div>
         </div>
       </div>
@@ -880,9 +928,136 @@
 
   document.addEventListener('DOMContentLoaded',updateCartUI);
   updateCartUI();
+
+  // ── Product Detail Modal ──
+  var PD_PRODUCTS = [
+  {name:"Veluxia Gold Pro",price:"$1,250",monthly:"$125",cat:"Device",
+   desc:"Professional-grade multi-functional facial device with EMS, RF, LED and microcurrent technology for a full clinical-level treatment at home.",
+   benefits:["5-in-1: EMS + RF + LED + Microcurrent + Vibration","Clinically proven skin tightening","Reduces wrinkles and lifts facial contours","Professional results from home"],
+   steps:["Apply conductive gel to clean skin","Select desired treatment mode","Glide device in upward strokes for 10–15 minutes","Use 3–4 times per week"],
+   skin:"All skin types, especially aging skin",size:"Device + accessories kit"},
+  {name:"Veluxia Pro X",price:"$980",monthly:"$98",cat:"Device",
+   desc:"Advanced RF and EMS lifting device that delivers spa-grade results with precision technology — visibly firmer, lifted skin in just weeks.",
+   benefits:["RF radiofrequency skin tightening","EMS muscle stimulation and lifting","Precision tip for targeted treatment","Visible lift in 4 weeks"],
+   steps:["Cleanse face and apply serum or gel","Power on and select intensity level","Glide in upward motions for 10 minutes","Use 3x per week for best results"],
+   skin:"Sagging and mature skin",size:"Device + charging dock"},
+  {name:"Veluxia Neck Pro",price:"$850",monthly:"$85",cat:"Device",
+   desc:"Targeted neck and décolleté lifting device with RF and EMS technology designed specifically to firm, tighten and smooth the neck area.",
+   benefits:["Specifically designed for neck and décolleté","Tightens and firms loose neck skin","Reduces neck lines and tech neck","Ergonomic curved design fits neck perfectly"],
+   steps:["Apply conductive gel to neck","Glide device upward from collarbone to chin","Treat for 10–15 minutes per session","Use 3–5 times per week"],
+   skin:"All skin types",size:"Device + travel pouch"},
+  {name:"Veluxia RED",price:"$720",monthly:"$72",cat:"Device",
+   desc:"Clinical LED red light therapy device that stimulates collagen, reduces inflammation and accelerates skin healing for a visibly younger complexion.",
+   benefits:["630nm red light boosts collagen production","Reduces redness and inflammation","Accelerates skin healing and repair","Non-invasive and pain-free treatment"],
+   steps:["Hold device 2–3cm from clean skin","Treat each area for 3–5 minutes","Use 4–5 times per week","Combine with serums for enhanced results"],
+   skin:"All skin types, especially sensitive and aging",size:"Device + protective goggles"},
+  {name:"LED Eye Lift Device",price:"$590",monthly:"$59",cat:"Device",
+   desc:"Precision LED eye device combining red and near-infrared light to reduce puffiness, dark circles and fine lines around the delicate eye area.",
+   benefits:["Dual LED wavelengths for eye area","Reduces puffiness and dark circles","Smooths fine lines and crow's feet","Gentle vibration for lymphatic drainage"],
+   steps:["Apply eye serum around eye area","Place device around eye contour","Activate for 3 minutes per eye","Use 4–5 times per week"],
+   skin:"All skin types",size:"Device + charging cable"},
+  {name:"Slim Edge Pro+",price:"$680",monthly:"$68",cat:"Device",
+   desc:"Body contouring device with EMS and infrared heat that targets stubborn areas, improves circulation and firms body skin for a sculpted silhouette.",
+   benefits:["EMS + infrared body contouring","Firms and tones body skin","Improves circulation and lymph flow","Targets stubborn areas on abdomen, thighs and arms"],
+   steps:["Apply conductive gel to target area","Select EMS intensity and heat level","Treat each area for 15–20 minutes","Use 4–5 times per week"],
+   skin:"All body skin types",size:"Device + body gel + strap"},
+  {name:"Hyaluronic Activated Serum",price:"$320",monthly:"$32",cat:"Serum",
+   desc:"Multi-weight hyaluronic acid serum designed to work synergistically with Derma Tech devices for amplified hydration and plumping results.",
+   benefits:["3 molecular weights of hyaluronic acid","Amplifies device treatment results","Instant plumping and hydration","Conductive formula for device use"],
+   steps:["Apply to clean skin before device treatment","Use as a conductive medium with RF/EMS devices","Can also be used daily without device"],
+   skin:"All skin types",size:"30ml / 1 fl oz"},
+  {name:"FLEX Relief Gel Probiotic",price:"$195",monthly:"$20",cat:"Skincare",
+   desc:"Probiotic-enriched conductive gel that prepares skin for device treatments while soothing, balancing and strengthening the skin microbiome.",
+   benefits:["Probiotic complex balances skin microbiome","Optimal conductive medium for all devices","Soothes and calms reactive skin","Supports skin barrier recovery"],
+   steps:["Apply liberally to clean skin before device use","Use as a conductive gel during EMS or RF treatments","Rinse after treatment or leave on as a treatment"],
+   skin:"All skin types, especially sensitive",size:"100ml / 3.4 fl oz"},
+];
+  var pdCurrentName = '';
+
+  function findPDProduct(name){
+    return PD_PRODUCTS.find(function(p){return p.name===name;});
+  }
+
+  window.openPD = function(name){
+    var p = findPDProduct(name);
+    if(!p) return;
+    pdCurrentName = name;
+
+    // Find image from the product card
+    var cards = document.querySelectorAll('.product-card');
+    var imgSrc = '';
+    cards.forEach(function(card){
+      var h = card.querySelector('h3');
+      if(h && h.textContent.trim()===name){
+        var img = card.querySelector('img');
+        if(img) imgSrc = img.src;
+      }
+    });
+
+    document.getElementById('pd-img').src = imgSrc;
+    document.getElementById('pd-img').alt = name;
+    document.getElementById('pd-cat').textContent = p.cat;
+    document.getElementById('pd-name').textContent = p.name;
+    document.getElementById('pd-price').textContent = p.price;
+    document.getElementById('pd-monthly').textContent = p.monthly;
+    document.getElementById('pd-desc').textContent = p.desc;
+    document.getElementById('pd-skin').textContent = '👤 ' + p.skin;
+    document.getElementById('pd-size').textContent = '📦 ' + p.size;
+
+    var bl = document.getElementById('pd-benefits');
+    bl.innerHTML = p.benefits.map(function(b){return '<li>'+b+'</li>';}).join('');
+
+    var sl = document.getElementById('pd-steps');
+    sl.innerHTML = p.steps.map(function(s){return '<li>'+s+'</li>';}).join('');
+
+    var footer = document.getElementById('pd-footer');
+    footer.innerHTML = '<button class="pd-add-btn" onclick="addToCart(\''+name+'\',\''+p.price+'\',\'Derma Tech\');closePD()">Add to Cart</button>';
+
+    document.getElementById('pd-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closePD = function(){
+    document.getElementById('pd-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') closePD();
+  });
+
 })();
 function toggleShopMenu(e){e.stopPropagation();var m=document.getElementById('shopMenu');if(m)m.classList.toggle('is-open');}
 document.addEventListener('click',function(e){var d=document.getElementById('shopDropdown');var m=document.getElementById('shopMenu');if(m&&d&&!d.contains(e.target))m.classList.remove('is-open');});
 </script>
+
+<!-- Product Detail Modal -->
+<div id="pd-modal">
+  <div id="pd-overlay" onclick="closePD()"></div>
+  <div id="pd-box">
+    <button id="pd-close" onclick="closePD()">✕</button>
+    <div class="pd-inner">
+      <div class="pd-img-col"><img id="pd-img" src="" alt=""/></div>
+      <div class="pd-info-col">
+        <div class="pd-cat" id="pd-cat"></div>
+        <h2 class="pd-name" id="pd-name"></h2>
+        <div class="pd-price" id="pd-price"></div>
+        <div class="pd-affirm">As low as <span id="pd-monthly"></span>/mo with <span class="affirm-logo">affirm</span></div>
+        <p class="pd-desc" id="pd-desc"></p>
+        <div class="pd-section">Key Benefits</div>
+        <ul class="pd-benefits" id="pd-benefits"></ul>
+        <div class="pd-section">How To Use</div>
+        <ol class="pd-steps" id="pd-steps"></ol>
+        <div class="pd-section">Details</div>
+        <div class="pd-meta">
+          <span class="pd-meta-tag" id="pd-skin"></span>
+          <span class="pd-meta-tag" id="pd-size"></span>
+        </div>
+      </div>
+    </div>
+    <div class="pd-footer" id="pd-footer"></div>
+  </div>
+</div>
+
 </body>
 </html>

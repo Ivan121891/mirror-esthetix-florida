@@ -268,7 +268,47 @@
     .btn-back-shop:hover{background:#4A3728}
     @media(max-width:640px){.checkout-two-col{flex-direction:column}.checkout-summary-side{width:100%}.checkout-box{border-radius:14px}}
 
-  </style>
+  
+    /* ── PRODUCT DETAIL MODAL ── */
+    #pd-modal{position:fixed;inset:0;z-index:1050;display:none;align-items:center;justify-content:center;padding:16px}
+    #pd-modal.open{display:flex}
+    #pd-overlay{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+    #pd-box{position:relative;background:#fff;border-radius:24px;width:100%;max-width:900px;max-height:92vh;overflow-y:auto;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+    #pd-close{position:absolute;top:16px;right:16px;background:#f5f0ea;border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .2s}
+    #pd-close:hover{background:var(--accent);color:#fff}
+    .pd-inner{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+    .pd-img-col{background:var(--cream);border-radius:24px 0 0 24px;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:320px}
+    .pd-img-col img{width:100%;height:100%;object-fit:cover}
+    .pd-info-col{padding:2rem 2rem 2rem 1.75rem;overflow-y:auto;display:flex;flex-direction:column;gap:.6rem}
+    .pd-cat{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent)}
+    .pd-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--brown-dark);line-height:1.2;margin:0}
+    .pd-price{font-size:1.4rem;font-weight:700;color:var(--brown-dark)}
+    .pd-affirm{font-size:.78rem;color:var(--text-light)}
+    .pd-affirm .affirm-logo{font-weight:900;font-size:.8rem;color:#4a4af4;letter-spacing:-.5px}
+    .pd-desc{font-size:.875rem;color:var(--text-light);line-height:1.7;border-top:1px solid var(--cream-dark);padding-top:.75rem;margin-top:.2rem}
+    .pd-section{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--brown);margin-top:.75rem;margin-bottom:.3rem}
+    .pd-benefits{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.3rem}
+    .pd-benefits li{font-size:.83rem;color:var(--text-light);display:flex;gap:.5rem;align-items:flex-start}
+    .pd-benefits li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+    .pd-steps{list-style:none;padding:0;margin:0;counter-reset:step;display:flex;flex-direction:column;gap:.3rem}
+    .pd-steps li{font-size:.83rem;color:var(--text-light);display:flex;gap:.6rem;align-items:flex-start;counter-increment:step}
+    .pd-steps li::before{content:counter(step);background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+    .pd-meta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.25rem}
+    .pd-meta-tag{background:var(--cream);border-radius:50px;padding:.25rem .85rem;font-size:.75rem;color:var(--brown);font-weight:500}
+    .pd-footer{padding:1.25rem 2rem;border-top:1px solid var(--cream-dark);display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+    .pd-add-btn{flex:1;padding:.85rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;letter-spacing:.3px;white-space:nowrap}
+    .pd-add-btn:hover{background:var(--brown-dark)}
+    .pd-book-btn{flex:1;padding:.85rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;letter-spacing:.3px;text-align:center;text-decoration:none;display:block;white-space:nowrap}
+    .pd-book-btn:hover{background:var(--brown-dark)}
+    .btn-view-details{background:none;border:1.5px solid var(--accent);color:var(--accent);padding:.45rem 1rem;border-radius:8px;font-size:.8rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .btn-view-details:hover{background:var(--accent);color:#fff}
+    @media(max-width:680px){
+      .pd-inner{grid-template-columns:1fr}
+      .pd-img-col{border-radius:24px 24px 0 0;min-height:220px;max-height:240px}
+      #pd-box{max-height:95vh}
+    }
+
+    </style>
 </head>
 <body>
 
@@ -333,6 +373,7 @@
             <span class="product-price">$480</span>
             <span class="affirm-monthly">As low as $46/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Age Defy Lifting Serum','$480','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Age Defy Lifting Serum')">View Details</button>
           </div>
         </div>
       </div>
@@ -349,6 +390,7 @@
             <span class="product-price">$420</span>
             <span class="affirm-monthly">As low as $40/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Vita-C Brightening Serum','$420','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Vita-C Brightening Serum')">View Details</button>
           </div>
         </div>
       </div>
@@ -365,6 +407,7 @@
             <span class="product-price">$390</span>
             <span class="affirm-monthly">As low as $37/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Replenishing Night Serum','$390','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Replenishing Night Serum')">View Details</button>
           </div>
         </div>
       </div>
@@ -381,6 +424,7 @@
             <span class="product-price">$520</span>
             <span class="affirm-monthly">As low as $50/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Bio-Restorative Crème','$520','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Bio-Restorative Crème')">View Details</button>
           </div>
         </div>
       </div>
@@ -397,6 +441,7 @@
             <span class="product-price">$350</span>
             <span class="affirm-monthly">As low as $34/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('ProLift Eye Treatment','$350','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('ProLift Eye Treatment')">View Details</button>
           </div>
         </div>
       </div>
@@ -413,6 +458,7 @@
             <span class="product-price">$310</span>
             <span class="affirm-monthly">As low as $30/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Midnight Renewal Mask','$310','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Midnight Renewal Mask')">View Details</button>
           </div>
         </div>
       </div>
@@ -429,6 +475,7 @@
             <span class="product-price">$280</span>
             <span class="affirm-monthly">As low as $27/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('BioLeaf Purifying Mask','$280','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('BioLeaf Purifying Mask')">View Details</button>
           </div>
         </div>
       </div>
@@ -445,6 +492,7 @@
             <span class="product-price">$260</span>
             <span class="affirm-monthly">As low as $25/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Microexfoliant Peel','$260','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Microexfoliant Peel')">View Details</button>
           </div>
         </div>
       </div>
@@ -461,6 +509,7 @@
             <span class="product-price">$240</span>
             <span class="affirm-monthly">As low as $23/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Purifying Clay Mask','$240','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Purifying Clay Mask')">View Details</button>
           </div>
         </div>
       </div>
@@ -477,6 +526,7 @@
             <span class="product-price">$195</span>
             <span class="affirm-monthly">As low as $19/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Facial Cleanser','$195','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Facial Cleanser')">View Details</button>
           </div>
         </div>
       </div>
@@ -493,6 +543,7 @@
             <span class="product-price">$220</span>
             <span class="affirm-monthly">As low as $21/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Brightening Toner','$220','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Brightening Toner')">View Details</button>
           </div>
         </div>
       </div>
@@ -509,6 +560,7 @@
             <span class="product-price">$275</span>
             <span class="affirm-monthly">As low as $26/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('SPF 50 Daily Moisturizer','$275','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('SPF 50 Daily Moisturizer')">View Details</button>
           </div>
         </div>
       </div>
@@ -525,6 +577,7 @@
             <span class="product-price">$360</span>
             <span class="affirm-monthly">As low as $34/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Silk Purifier Serum','$360','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Silk Purifier Serum')">View Details</button>
           </div>
         </div>
       </div>
@@ -541,6 +594,7 @@
             <span class="product-price">$430</span>
             <span class="affirm-monthly">As low as $41/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Luminous Night Crème','$430','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Luminous Night Crème')">View Details</button>
           </div>
         </div>
       </div>
@@ -557,6 +611,7 @@
             <span class="product-price">$185</span>
             <span class="affirm-monthly">As low as $18/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Noni Body Butter','$185','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Noni Body Butter')">View Details</button>
           </div>
         </div>
       </div>
@@ -573,6 +628,7 @@
             <span class="product-price">$155</span>
             <span class="affirm-monthly">As low as $15/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Noni Body Lotion','$155','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Noni Body Lotion')">View Details</button>
           </div>
         </div>
       </div>
@@ -589,6 +645,7 @@
             <span class="product-price">$165</span>
             <span class="affirm-monthly">As low as $16/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Noni Body Scrub','$165','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Noni Body Scrub')">View Details</button>
           </div>
         </div>
       </div>
@@ -605,6 +662,7 @@
             <span class="product-price">$890</span>
             <span class="affirm-monthly">As low as $85/mo with <span class="affirm-logo">affirm</span></span>
             <button class="btn-add" onclick="addToCart('Gold Collection Gift Set','$890','Avinichi')">Add to Cart</button>
+            <button class="btn-view-details" onclick="openPD('Gold Collection Gift Set')">View Details</button>
           </div>
         </div>
       </div>
@@ -1040,9 +1098,186 @@
 
   document.addEventListener('DOMContentLoaded',updateCartUI);
   updateCartUI();
+
+  // ── Product Detail Modal ──
+  var PD_PRODUCTS = [
+  {name:"Age Defy Lifting Serum",price:"$480",monthly:"$48",cat:"Serum",
+   desc:"Luxurious lifting serum with bio-fermented actives and peptides that visibly tighten, firm and restore youthful contours to aging skin.",
+   benefits:["Visibly lifts and firms skin contours","Reduces deep wrinkles and expression lines","Bio-fermented actives for cellular renewal","Results visible in 2 weeks"],
+   steps:["Apply 3–4 drops to cleansed face and neck","Use morning and evening","Massage in upward lifting motions"],
+   skin:"Mature and aging skin",size:"30ml / 1 fl oz"},
+  {name:"Vita-C Brightening Serum",price:"$420",monthly:"$42",cat:"Serum",
+   desc:"High-potency vitamin C serum that fades pigmentation, boosts collagen and delivers an instant, lasting glow for visibly younger-looking skin.",
+   benefits:["20% stabilized Vitamin C complex","Fades dark spots in 4–6 weeks","Boosts natural collagen production","Antioxidant shield against UV damage"],
+   steps:["Apply 3–4 drops every morning","Layer under moisturizer and SPF","Store in a cool, dark place"],
+   skin:"All skin types, especially dull or pigmented skin",size:"30ml / 1 fl oz"},
+  {name:"Replenishing Night Serum",price:"$390",monthly:"$39",cat:"Serum",
+   desc:"Overnight repair serum that works with your skin's natural renewal cycle to restore moisture, smooth texture and wake up to visibly refreshed skin.",
+   benefits:["Deep overnight repair and renewal","Restores moisture lost during the day","Smooths texture and fine lines while you sleep","Wake up with softer, plumper skin"],
+   steps:["Apply generously to face and neck at night","Use after cleansing and toning","Follow with night crème for best results"],
+   skin:"Dry, dehydrated and mature skin",size:"30ml / 1 fl oz"},
+  {name:"Bio-Restorative Crème",price:"$520",monthly:"$52",cat:"Moisturizer",
+   desc:"Ultra-rich restorative crème with bio-engineered ingredients that deeply nourish, repair and fortify the skin barrier for lasting comfort and radiance.",
+   benefits:["Repairs and reinforces skin barrier","Provides lasting 48-hour hydration","Bio-engineered complex for cell renewal","Reduces sensitivity and redness"],
+   steps:["Apply morning and evening to face and neck","Use after serum while skin is still slightly damp","A little goes a long way"],
+   skin:"Dry, sensitive and mature skin",size:"50ml / 1.7 fl oz"},
+  {name:"ProLift Eye Treatment",price:"$350",monthly:"$35",cat:"Eye Care",
+   desc:"Advanced eye treatment that targets all signs of aging around the eyes — puffiness, dark circles, fine lines and loss of firmness.",
+   benefits:["Lifts and firms the eye contour","Reduces puffiness and dark circles","Smooths crow's feet and fine lines","Brightening caffeine + peptide complex"],
+   steps:["Tap gently around eye area with ring finger","Use morning and evening","Apply before heavier moisturizers"],
+   skin:"All skin types",size:"15ml / 0.5 fl oz"},
+  {name:"Midnight Renewal Mask",price:"$310",monthly:"$31",cat:"Mask",
+   desc:"Luxurious overnight mask that transforms skin while you sleep — deeply hydrating, plumping and renewing for a radiant morning complexion.",
+   benefits:["Intense overnight hydration boost","Plumps and smooths by morning","Supports natural cell turnover","No-rinse sleeping mask formula"],
+   steps:["Apply as the last step in your evening routine","Use 2–3 times per week","Rinse off in the morning or leave on"],
+   skin:"Dry, dehydrated and dull skin",size:"75ml / 2.5 fl oz"},
+  {name:"BioLeaf Purifying Mask",price:"$280",monthly:"$28",cat:"Mask",
+   desc:"Natural clay and botanical leaf extract mask that deeply purifies, clarifies and minimizes pores for a clean, fresh and balanced complexion.",
+   benefits:["Purifies and unclogs pores deeply","Balances oil production","Botanical extracts soothe while they cleanse","Visibly smaller pores after first use"],
+   steps:["Apply a thin layer to clean dry skin","Leave on for 15 minutes","Rinse thoroughly with lukewarm water"],
+   skin:"Oily, combination and congested skin",size:"75ml / 2.5 fl oz"},
+  {name:"Microexfoliant Peel",price:"$260",monthly:"$26",cat:"Skincare",
+   desc:"Gentle enzyme peel that resurfaces skin, removes dead cells and reveals a smoother, more radiant complexion without harsh abrasion.",
+   benefits:["Gentle enzymatic exfoliation","Reveals fresh, smooth skin instantly","Improves product absorption","No micro-tears — safe for sensitive skin"],
+   steps:["Apply to damp skin and massage gently","Leave on for 5 minutes then rinse","Use 1–2 times per week"],
+   skin:"All skin types except broken skin",size:"60ml / 2 fl oz"},
+  {name:"Purifying Clay Mask",price:"$240",monthly:"$24",cat:"Mask",
+   desc:"Classic kaolin clay mask enriched with tea tree and salicylic acid to deeply cleanse pores and combat breakouts for clearer skin.",
+   benefits:["Draws out impurities and excess oil","Kaolin + bentonite dual-clay formula","Tea tree for antibacterial action","Reduces breakouts with regular use"],
+   steps:["Apply to clean face avoiding eye area","Leave on for 10–12 minutes","Rinse and follow with toner"],
+   skin:"Oily and acne-prone skin",size:"75ml / 2.5 fl oz"},
+  {name:"Facial Cleanser",price:"$195",monthly:"$20",cat:"Cleanser",
+   desc:"Gentle daily cleanser that thoroughly removes makeup, sunscreen and impurities while keeping skin soft, balanced and perfectly prepped.",
+   benefits:["Effective yet gentle daily cleansing","Removes SPF and makeup thoroughly","pH-balanced formula","Leaves no residue or tightness"],
+   steps:["Apply to damp face morning and evening","Work into a lather and massage gently","Rinse with lukewarm water"],
+   skin:"All skin types",size:"150ml / 5 fl oz"},
+  {name:"Brightening Toner",price:"$220",monthly:"$22",cat:"Toner",
+   desc:"Brightening toner infused with niacinamide and botanical extracts to even skin tone, tighten pores and prep skin for maximum product absorption.",
+   benefits:["Niacinamide fades dark spots","Tightens and refines pore appearance","Preps skin for enhanced serum absorption","Alcohol-free, non-irritating formula"],
+   steps:["Apply to cotton pad after cleansing","Sweep gently across face and neck","Let absorb before applying serum"],
+   skin:"All skin types, especially uneven tone",size:"150ml / 5 fl oz"},
+  {name:"SPF 50 Daily Moisturizer",price:"$275",monthly:"$28",cat:"SPF",
+   desc:"Lightweight daily moisturizer with broad spectrum SPF 50 protection that hydrates, protects and primes skin without white cast or greasiness.",
+   benefits:["Broad spectrum SPF 50 UVA/UVB","Lightweight, no white cast","Hydrates while it protects","Daily protection against photoaging"],
+   steps:["Apply as the final step of your morning routine","Use generously on face and neck","Reapply every 2 hours when outdoors"],
+   skin:"All skin types",size:"50ml / 1.7 fl oz"},
+  {name:"Silk Purifier Serum",price:"$360",monthly:"$36",cat:"Serum",
+   desc:"Silky pore-refining serum that combines niacinamide and salicylic acid to clear congestion, minimize pores and create a smooth, matte finish.",
+   benefits:["Minimizes enlarged pores visibly","Niacinamide + BHA formula","Controls shine and excess oil","Smooths skin texture in 2 weeks"],
+   steps:["Apply 2–3 drops to clean skin","Use morning or evening (not both initially)","Introduce gradually to build tolerance"],
+   skin:"Oily, large-pored and combination skin",size:"30ml / 1 fl oz"},
+  {name:"Luminous Night Crème",price:"$430",monthly:"$43",cat:"Moisturizer",
+   desc:"Opulent overnight crème with retinol, peptides and botanical oils that deeply restores skin while you sleep for a luminous, youthful complexion.",
+   benefits:["Retinol stimulates cell turnover overnight","Peptides rebuild collagen","Deep nourishment with botanical oils","Wake up with glowing, plump skin"],
+   steps:["Apply generously to face and neck at night","Use as the last step in evening routine","Start 2x/week and increase as tolerated"],
+   skin:"Mature and anti-aging focused skin",size:"50ml / 1.7 fl oz"},
+  {name:"Noni Body Butter",price:"$185",monthly:"$19",cat:"Body",
+   desc:"Indulgent whipped body butter with noni oil and shea to intensely nourish, soften and protect dry body skin with lasting moisture.",
+   benefits:["Intensely moisturizes dry body skin","Rich noni oil + shea butter blend","Long-lasting hydration all day","Leaves skin silky smooth and soft"],
+   steps:["Apply to body after showering","Massage into skin in circular motions","Focus on dry areas like elbows and knees"],
+   skin:"Dry and very dry body skin",size:"200ml / 6.8 fl oz"},
+  {name:"Noni Body Lotion",price:"$155",monthly:"$16",cat:"Body",
+   desc:"Lightweight daily body lotion with noni extract that absorbs quickly to hydrate, soften and smooth skin without any greasy residue.",
+   benefits:["Fast-absorbing lightweight formula","All-day hydration without greasiness","Noni extract for added skin benefits","Suitable for daily full-body use"],
+   steps:["Apply to clean body skin daily","Best applied after showering on damp skin","Massage until fully absorbed"],
+   skin:"Normal to dry body skin",size:"250ml / 8.5 fl oz"},
+  {name:"Noni Body Scrub",price:"$165",monthly:"$17",cat:"Body",
+   desc:"Exfoliating body scrub with noni extract and natural sugar crystals that buffs away dead skin cells for irresistibly smooth, radiant body skin.",
+   benefits:["Removes dead skin cells effectively","Natural sugar crystals — gentle yet effective","Reveals smooth, glowing body skin","Noni extract nourishes as it exfoliates"],
+   steps:["Apply to wet skin in circular motions","Focus on rough areas like knees and elbows","Rinse thoroughly and follow with body lotion"],
+   skin:"All body skin types",size:"300ml / 10 fl oz"},
+  {name:"Gold Collection Gift Set",price:"$890",monthly:"$89",cat:"Bundle Set",
+   desc:"Luxurious curated bundle set featuring our best-selling gold-infused collection — the ultimate gifting experience for any skincare enthusiast.",
+   benefits:["5 full-size gold-infused bestsellers","Beautifully boxed — ready to gift","Save over $200 vs. buying separately","Complete morning and evening routine"],
+   steps:["Follow each product's individual directions","Includes routine guide card inside the box","Suitable for daily use"],
+   skin:"All skin types",size:"Full-size 5-piece set"},
+];
+  var pdCurrentName = '';
+
+  function findPDProduct(name){
+    return PD_PRODUCTS.find(function(p){return p.name===name;});
+  }
+
+  window.openPD = function(name){
+    var p = findPDProduct(name);
+    if(!p) return;
+    pdCurrentName = name;
+
+    // Find image from the product card
+    var cards = document.querySelectorAll('.product-card');
+    var imgSrc = '';
+    cards.forEach(function(card){
+      var h = card.querySelector('h3');
+      if(h && h.textContent.trim()===name){
+        var img = card.querySelector('img');
+        if(img) imgSrc = img.src;
+      }
+    });
+
+    document.getElementById('pd-img').src = imgSrc;
+    document.getElementById('pd-img').alt = name;
+    document.getElementById('pd-cat').textContent = p.cat;
+    document.getElementById('pd-name').textContent = p.name;
+    document.getElementById('pd-price').textContent = p.price;
+    document.getElementById('pd-monthly').textContent = p.monthly;
+    document.getElementById('pd-desc').textContent = p.desc;
+    document.getElementById('pd-skin').textContent = '👤 ' + p.skin;
+    document.getElementById('pd-size').textContent = '📦 ' + p.size;
+
+    var bl = document.getElementById('pd-benefits');
+    bl.innerHTML = p.benefits.map(function(b){return '<li>'+b+'</li>';}).join('');
+
+    var sl = document.getElementById('pd-steps');
+    sl.innerHTML = p.steps.map(function(s){return '<li>'+s+'</li>';}).join('');
+
+    var footer = document.getElementById('pd-footer');
+    footer.innerHTML = '<button class="pd-add-btn" onclick="addToCart(\''+name+'\',\''+p.price+'\',\'Avinichi\');closePD()">Add to Cart</button>';
+
+    document.getElementById('pd-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closePD = function(){
+    document.getElementById('pd-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') closePD();
+  });
+
 })();
 function toggleShopMenu(e){e.stopPropagation();var m=document.getElementById('shopMenu');if(m)m.classList.toggle('is-open');}
 document.addEventListener('click',function(e){var d=document.getElementById('shopDropdown');var m=document.getElementById('shopMenu');if(m&&d&&!d.contains(e.target))m.classList.remove('is-open');});
 </script>
+
+<!-- Product Detail Modal -->
+<div id="pd-modal">
+  <div id="pd-overlay" onclick="closePD()"></div>
+  <div id="pd-box">
+    <button id="pd-close" onclick="closePD()">✕</button>
+    <div class="pd-inner">
+      <div class="pd-img-col"><img id="pd-img" src="" alt=""/></div>
+      <div class="pd-info-col">
+        <div class="pd-cat" id="pd-cat"></div>
+        <h2 class="pd-name" id="pd-name"></h2>
+        <div class="pd-price" id="pd-price"></div>
+        <div class="pd-affirm">As low as <span id="pd-monthly"></span>/mo with <span class="affirm-logo">affirm</span></div>
+        <p class="pd-desc" id="pd-desc"></p>
+        <div class="pd-section">Key Benefits</div>
+        <ul class="pd-benefits" id="pd-benefits"></ul>
+        <div class="pd-section">How To Use</div>
+        <ol class="pd-steps" id="pd-steps"></ol>
+        <div class="pd-section">Details</div>
+        <div class="pd-meta">
+          <span class="pd-meta-tag" id="pd-skin"></span>
+          <span class="pd-meta-tag" id="pd-size"></span>
+        </div>
+      </div>
+    </div>
+    <div class="pd-footer" id="pd-footer"></div>
+  </div>
+</div>
+
 </body>
 </html>

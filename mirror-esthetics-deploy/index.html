@@ -916,7 +916,34 @@
     }
     .dropdown-brand-link:hover { background: #FBF5EE; color: #C9956A; }
     .brand-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; display: inline-block; }
-</style>
+
+    /* ── SERVICE DETAIL MODAL ── */
+    #sv-modal{position:fixed;inset:0;z-index:1050;display:none;align-items:center;justify-content:center;padding:16px}
+    #sv-modal.open{display:flex}
+    #sv-overlay{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+    #sv-box{position:relative;background:#fff;border-radius:24px;width:100%;max-width:700px;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+    #sv-close{position:absolute;top:16px;right:16px;background:#f5f0ea;border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .2s}
+    #sv-close:hover{background:var(--accent);color:#fff}
+    .sv-header{padding:2rem 2rem 1rem;border-bottom:1px solid var(--cream-dark)}
+    .sv-cat{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--accent);margin-bottom:.3rem}
+    .sv-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--brown-dark);margin:0 0 .75rem}
+    .sv-meta-row{display:flex;gap:.75rem;flex-wrap:wrap}
+    .sv-pill{background:var(--cream);border-radius:50px;padding:.3rem 1rem;font-size:.8rem;color:var(--brown);font-weight:500}
+    .sv-price-pill{background:var(--accent);color:#fff;border-radius:50px;padding:.3rem 1rem;font-size:.8rem;font-weight:700}
+    .sv-body{padding:1.5rem 2rem}
+    .sv-desc{font-size:.9rem;color:var(--text-light);line-height:1.75;margin-bottom:1.25rem}
+    .sv-section{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--brown);margin-bottom:.5rem;margin-top:1.1rem}
+    .sv-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.4rem}
+    .sv-list.checks li::before{content:'✓';color:var(--accent);font-weight:700;margin-right:.5rem}
+    .sv-list.dots li::before{content:'•';color:var(--accent);font-weight:700;margin-right:.5rem}
+    .sv-list li{font-size:.855rem;color:var(--text-light)}
+    .sv-affirm{font-size:.78rem;color:var(--text-light);margin-top:.3rem}
+    .sv-affirm .affirm-logo{font-weight:900;font-size:.8rem;color:#4a4af4;letter-spacing:-.5px}
+    .sv-footer{padding:1.25rem 2rem;border-top:1px solid var(--cream-dark);display:flex;gap:.75rem;align-items:center}
+    .sv-book-btn{flex:1;padding:.9rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s;text-align:center;text-decoration:none;display:block}
+    .sv-book-btn:hover{background:var(--brown-dark)}
+
+    </style>
 </head>
 <body>
 
@@ -1027,6 +1054,7 @@
           <div class="service-footer">
             <span class="service-price">$150</span>
             <span class="service-affirm">As low as $15/mo with <span class="affirm-logo">affirm</span></span>
+            <button class="btn-view-details" onclick="openSV('Signature Facial')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
         </div>
@@ -1044,6 +1072,7 @@
           <div class="service-footer">
             <span class="service-price">$280</span>
             <span class="service-affirm">As low as $28/mo with <span class="affirm-logo">affirm</span></span>
+            <button class="btn-view-details" onclick="openSV('Body Sculpting')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
         </div>
@@ -1061,6 +1090,7 @@
           <div class="service-footer">
             <span class="service-price">$220</span>
             <span class="service-affirm">As low as $22/mo with <span class="affirm-logo">affirm</span></span>
+            <button class="btn-view-details" onclick="openSV('Anti-Aging Treatment')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
         </div>
@@ -1078,6 +1108,7 @@
           <div class="service-footer">
             <span class="service-price">$80</span>
             <span class="service-affirm">As low as $8/mo with <span class="affirm-logo">affirm</span></span>
+            <button class="btn-view-details" onclick="openSV('Expert Skin Consultation')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
         </div>
@@ -1095,6 +1126,7 @@
           <div class="service-footer">
             <span class="service-price">$175</span>
             <span class="service-affirm">As low as $18/mo with <span class="affirm-logo">affirm</span></span>
+            <button class="btn-view-details" onclick="openSV('Hydration Therapy')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
         </div>
@@ -1112,6 +1144,7 @@
           <div class="service-footer">
             <span class="service-price">$195</span>
             <span class="service-affirm">As low as $20/mo with <span class="affirm-logo">affirm</span></span>
+            <button class="btn-view-details" onclick="openSV('Premium Skincare Session')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
         </div>
@@ -1129,6 +1162,7 @@
           <div class="service-footer">
             <span class="service-price">$120</span>
             <span class="service-affirm">As low as $12/mo with <span class="affirm-logo">affirm</span></span>
+            <button class="btn-view-details" onclick="openSV('Beauty & Makeup')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
         </div>
@@ -1146,6 +1180,7 @@
           <div class="service-footer">
             <span class="service-price">$135</span>
             <span class="service-affirm">As low as $14/mo with <span class="affirm-logo">affirm</span></span>
+            <button class="btn-view-details" onclick="openSV('Scalp & Hair Care')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
         </div>
@@ -1560,7 +1595,87 @@
       menu.classList.remove('is-open');
     }
   });
-  </script>
+  
+  var SV_SERVICES = [
+  {name:"Signature Facial",price:"$150",monthly:"$15",cat:"Facial",duration:"60 min",
+   desc:"Customized facials using advanced formulas to deeply cleanse, hydrate, and restore your skin's natural radiance. Each session is tailored to your unique skin type and concerns.",skin:"All skin types",
+   includes:["Skin analysis and consultation","Double cleanse and exfoliation","Customized serum and mask application","Hydrating moisturizer and SPF finish"],benefits:["Deep cleansing and pore refinement","Intense hydration and plumping","Restored radiance and even tone","Relaxing and rejuvenating experience"]},
+  {name:"Body Sculpting",price:"$280",monthly:"$28",cat:"Body",duration:"75 min",
+   desc:"Non-invasive body contouring treatments that shape and tone for lasting, visible results — no surgery, no downtime, just a more confident you.",skin:"All body skin types",
+   includes:["Pre-treatment body analysis","EMS and RF contouring treatment","Lymphatic drainage massage","Post-treatment cooling and soothing"],benefits:["Visible inch loss after first session","Tones and firms body skin","Improves circulation and lymph flow","Zero downtime — resume daily activities immediately"]},
+  {name:"Anti-Aging Treatment",price:"$220",monthly:"$22",cat:"Anti-Aging",duration:"75 min",
+   desc:"Targeted therapies combining peptides, retinoids, and collagen-boosting actives to reduce fine lines, firm skin, and restore youthful vitality and elasticity.",skin:"Mature and aging skin",
+   includes:["Advanced skin analysis","Peptide and retinoid serum infusion","Collagen-boosting facial massage","Firming mask and moisturizer"],benefits:["Visibly reduces fine lines and wrinkles","Firms and lifts skin contours","Restores lost volume and radiance","Long-lasting anti-aging effects"]},
+  {name:"Expert Skin Consultation",price:"$80",monthly:"$8",cat:"Consultation",duration:"30 min",
+   desc:"One-on-one consultations with our skincare specialists. We analyze your skin, understand your goals, and build a perfectly personalized treatment and product routine.",skin:"All skin types",
+   includes:["In-depth skin analysis with magnification","Personalized skincare routine plan","Product recommendations tailored to your skin","Follow-up care guide to take home"],benefits:["Clear understanding of your skin type","Personalized routine built just for you","Expert guidance on ingredients to use and avoid","Investment credited toward first treatment"]},
+  {name:"Hydration Therapy",price:"$175",monthly:"$18",cat:"Hydration",duration:"60 min",
+   desc:"Deep-moisture infusion treatments that replenish your skin barrier from within, leaving skin visibly dewy, plump, and radiantly glowing.",skin:"Dry, dehydrated and sensitive skin",
+   includes:["Hydrating cleanse and prep","Hyaluronic acid infusion treatment","Barrier-repair mask","Plumping moisturizer and facial massage"],benefits:["Instant deep hydration from within","Plumps and smooths dehydrated skin","Restores a healthy, dewy glow","Strengthens compromised skin barrier"]},
+  {name:"Premium Skincare Session",price:"$195",monthly:"$20",cat:"Skincare",duration:"60 min",
+   desc:"A full treatment session featuring our curated luxury skincare line — cleanse, exfoliate, serum, and moisturize with science-backed premium formulas.",skin:"All skin types",
+   includes:["Luxury double cleanse","Enzyme exfoliation","Full-price serum infusion","Premium moisturizer and eye treatment"],benefits:["Experience our full luxury product line","Professional application techniques","Take home personalized product recommendations","Glowing results you can see immediately"]},
+  {name:"Beauty & Makeup",price:"$120",monthly:"$12",cat:"Beauty",duration:"45 min",
+   desc:"Professional makeup artistry services for weddings, events, photoshoots, and everyday flawless looks — crafted to enhance your natural beauty and confidence.",skin:"All skin types",
+   includes:["Skin prep and prime","Full professional makeup application","Setting spray for long-lasting wear","Touch-up kit to take home"],benefits:["Flawless professional finish","Long-lasting — up to 12 hours of wear","Customized to your style and occasion","Learn techniques from our expert artists"]},
+  {name:"Scalp & Hair Care",price:"$135",monthly:"$14",cat:"Hair",duration:"45 min",
+   desc:"Nourishing scalp treatments and restorative hair therapies that stimulate healthy growth, restore balance, and bring back your hair's natural volume and shine.",skin:"All hair and scalp types",
+   includes:["Scalp analysis and consultation","Exfoliating scalp treatment","Nourishing hair mask application","Scalp massage for circulation stimulation"],benefits:["Stimulates healthy hair growth","Balances scalp oil production","Restores hair strength and shine","Relieves scalp tension and stress"]},
+];
+
+  window.openSV = function(name){
+    var s = SV_SERVICES.find(function(x){return x.name===name;});
+    if(!s) return;
+    document.getElementById('sv-cat').textContent = s.cat;
+    document.getElementById('sv-name').textContent = s.name;
+    document.getElementById('sv-price').textContent = s.price;
+    document.getElementById('sv-duration').textContent = '⏱ ' + s.duration;
+    document.getElementById('sv-skin').textContent = '👤 ' + s.skin;
+    document.getElementById('sv-monthly').textContent = s.monthly;
+    document.getElementById('sv-desc').textContent = s.desc;
+    document.getElementById('sv-includes').innerHTML = s.includes.map(function(i){return '<li>'+i+'</li>';}).join('');
+    document.getElementById('sv-benefits').innerHTML = s.benefits.map(function(b){return '<li>'+b+'</li>';}).join('');
+    document.getElementById('sv-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeSV = function(){
+    document.getElementById('sv-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', function(e){if(e.key==='Escape'){closePD&&closePD();closeSV&&closeSV();}});
+
+</script>
+
+
+<!-- Service Detail Modal -->
+<div id="sv-modal">
+  <div id="sv-overlay" onclick="closeSV()"></div>
+  <div id="sv-box">
+    <button id="sv-close" onclick="closeSV()">✕</button>
+    <div class="sv-header">
+      <div class="sv-cat" id="sv-cat"></div>
+      <h2 class="sv-name" id="sv-name"></h2>
+      <div class="sv-meta-row">
+        <span class="sv-price-pill" id="sv-price"></span>
+        <span class="sv-pill" id="sv-duration"></span>
+        <span class="sv-pill" id="sv-skin"></span>
+      </div>
+      <div class="sv-affirm" style="margin-top:.5rem">As low as <span id="sv-monthly"></span>/mo with <span class="affirm-logo">affirm</span></div>
+    </div>
+    <div class="sv-body">
+      <p class="sv-desc" id="sv-desc"></p>
+      <div class="sv-section">What's Included</div>
+      <ul class="sv-list checks" id="sv-includes"></ul>
+      <div class="sv-section">Benefits</div>
+      <ul class="sv-list dots" id="sv-benefits"></ul>
+    </div>
+    <div class="sv-footer">
+      <a href="/contact" class="sv-book-btn">Book This Treatment →</a>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
