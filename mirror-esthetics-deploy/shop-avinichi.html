@@ -12,7 +12,7 @@
       c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);
       a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);
       a=0;for(b=["get","token","url","items"].split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);
-      h.async=!0;h.src=g[c[m]];n.parentNode.insertBefore(h,n);delete g[m];l[e]=c;
+      h.async=!0;h.src=g[m];n.parentNode.insertBefore(h,n);delete g[m];l[e]=c;
     })(window,_affirm_config,"script","affirm","checkout","SCRIPT","ready");
   </script>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
@@ -1105,18 +1105,29 @@
           tax_amount:0,
           total:Math.round((sub+15)*100)
         };
-        if(typeof affirm === 'undefined' || typeof affirm.checkout !== 'function'){
-          alert('Affirm is loading, please wait a moment and try again.');
+        if(typeof affirm === 'undefined'){
+          alert('Affirm unavailable. Please choose Credit / Debit Card.');
+          return;
+        }
+        if(typeof affirm.checkout !== 'function'){
+          alert('Affirm is still loading. Please wait 3 seconds and try again.');
           return;
         }
         try {
           affirm.checkout(checkoutData);
           affirm.checkout.open({
-            onFail: function(){ alert('Affirm checkout was cancelled. Please try again or choose Credit / Debit Card.'); },
-            onSuccess: function(a){ saveCart([]); showStep(3); }
+            onFail: function(err){
+              console.error('Affirm onFail:', err);
+              alert('Affirm checkout was cancelled or failed. Please try again or choose Credit / Debit Card.');
+            },
+            onSuccess: function(a){
+              console.log('Affirm success:', a);
+              saveCart([]); showStep(3);
+            }
           });
         } catch(e) {
-          alert('Affirm could not open. Please try again or choose Credit / Debit Card. Error: ' + e.message);
+          console.error('Affirm catch error:', e);
+          alert('Affirm error: ' + (e && e.message ? e.message : String(e)) + '\n\nPlease try Credit / Debit Card instead.');
         }
         return;
       }
