@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/shop/cbgardn",   "destination": "/shop-cbgardn" },
+    { "source": "/shop/avinichi",  "destination": "/shop-avinichi" },
+    { "source": "/shop/dermatech", "destination": "/shop-dermatech" },
+    { "source": "/shop/emptechpro","destination": "/shop-emptechpro" }
+  ]
+}

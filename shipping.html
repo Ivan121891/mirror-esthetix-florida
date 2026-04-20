@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Affirm SDK -->
+  <script>
+    var _affirm_config = {
+      public_api_key: "QZKKS6VZ3VQ4KV2B",
+      script: "https://cdn1.affirm.com/js/v2/affirm.js"
+    };
+    (function(l,g,m,e,a,f,b){
+      var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};
+      c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);
+      a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);
+      a=0;for(b=["get","token","url","items"].split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);
+      h.async=!0;h.src=g[m];n.parentNode.insertBefore(h,n);delete g[m];l[e]=c;
+    })(window,_affirm_config,"script","affirm","checkout","SCRIPT","ready");
+  </script>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
+  <link rel="apple-touch-icon" sizes="192x192" href="data:image/png;base64,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"/>
+  <meta name="description" content="Mirror Esthetics – Premium skincare studio in Gainesville, FL. Advanced facials, body sculpting, and luxury skincare products."/>
+  <link rel="canonical" href="https://mirrorestheticsfl.com/shipping"/>
+  <meta property="og:title" content="Shipping Policy | Mirror Esthetics"/>
+  <meta property="og:url" content="https://mirrorestheticsfl.com/shipping"/>
+  <meta property="og:site_name" content="Mirror Esthetics"/>
+  <meta property="og:type" content="website"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shipping Policy | Mirror Esthetics</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--cream:#FBF5EE;--cream-dark:#F2E8DA;--brown:#7C5C3E;--brown-dark:#4A3728;--text:#2C1A0E;--text-light:#6B5240;--accent:#C9956A;--white:#FFFFFF;--shadow:rgba(124,92,62,0.12)}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
+    header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(251,245,238,0.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--cream-dark);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px}
+    .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--brown-dark);text-decoration:none;letter-spacing:-0.5px}
+    .logo span{color:var(--accent)}
+    nav{display:flex;align-items:center;gap:2rem}
+    nav a{font-size:.9rem;font-weight:500;color:var(--text-light);text-decoration:none;transition:color .2s}
+    nav a:hover{color:var(--brown)}
+    .btn-book{background:var(--brown-dark);color:#fff;border:none;padding:.6rem 1.4rem;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s}
+    .btn-book:hover{background:var(--brown)}
+    .dropdown{position:relative}
+    .dropdown-trigger{background:none;border:none;font:inherit;color:var(--text-light);cursor:pointer;padding:0;font-size:.9rem;font-weight:500}
+    .dropdown-trigger:hover{color:var(--accent)}
+    .dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:-16px;background:#fff;border-radius:12px;padding:8px 0;min-width:210px;box-shadow:0 12px 40px rgba(0,0,0,.2);border:1px solid #f0ebe5;z-index:99999}
+    .dropdown-menu.is-open{display:block}
+    .dropdown-brand-link{display:flex;align-items:center;gap:10px;padding:11px 20px;font-size:14px;font-weight:500;color:#4A3728;text-decoration:none;white-space:nowrap}
+    .dropdown-brand-link:hover{background:#FBF5EE;color:#C9956A}
+    .brand-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;display:inline-block}
+    .page-banner{margin-top:72px;height:240px;background:linear-gradient(135deg,var(--brown-dark),var(--accent));display:flex;align-items:center;justify-content:center;text-align:center}
+    .page-banner h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;font-weight:700}
+    .page-banner p{color:rgba(255,255,255,.7);margin-top:.5rem;font-size:.9rem}
+    .policy-body{max-width:820px;margin:0 auto;padding:4rem 5%}
+    .policy-body h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--brown-dark);margin:2.5rem 0 .75rem;font-weight:700}
+    .policy-body h3{font-size:1.05rem;color:var(--brown-dark);margin:1.5rem 0 .5rem;font-weight:600}
+    .policy-body p{color:var(--text-light);line-height:1.8;margin-bottom:1rem;font-size:.95rem}
+    .policy-body ul{color:var(--text-light);padding-left:1.5rem;margin-bottom:1rem}
+    .policy-body ul li{margin-bottom:.4rem;line-height:1.7;font-size:.95rem}
+    .policy-body a{color:var(--accent);text-decoration:none}
+    .policy-body a:hover{text-decoration:underline}
+    .effective-date{display:inline-block;background:var(--cream-dark);border-radius:8px;padding:.4rem 1rem;font-size:.8rem;color:var(--text-light);margin-bottom:2rem;font-weight:500}
+    footer{background:#1E0E06;color:rgba(255,255,255,.7);padding:4rem 5% 2rem}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:3rem;margin-bottom:3rem}
+    .footer-brand .logo{color:var(--cream);font-size:1.35rem}
+    .footer-brand p{font-size:.85rem;margin-top:.75rem;line-height:1.7;color:rgba(255,255,255,.5);max-width:240px}
+    .footer-social{display:flex;gap:.75rem;margin-top:1.25rem}
+    .social-btn{width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.9rem;cursor:pointer;transition:background .2s;text-decoration:none;color:rgba(255,255,255,.7)}
+    .social-btn:hover{background:var(--accent);color:#fff}
+    .footer-col h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.9);margin-bottom:1.25rem}
+    .footer-col a{display:block;font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:.6rem;transition:color .2s}
+    .footer-col a:hover{color:var(--accent)}
+    .footer-contact p{display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;margin-bottom:.75rem;color:rgba(255,255,255,.5)}
+    .footer-contact p span{font-size:1rem;flex-shrink:0;margin-top:.1rem}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.78rem;color:rgba(255,255,255,.3)}
+    .footer-bottom-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+    .footer-bottom-links a{color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+    .footer-bottom-links a:hover{color:var(--accent)}
+    @media(max-width:768px){nav{display:none}.footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Mirror <span>Esthetics</span></a>
+    <nav>
+      <a href="/">Home</a>
+      <div class="dropdown" id="shopDropdown">
+        <button class="dropdown-trigger" onclick="toggleShopMenu(event)">Shop ▾</button>
+        <div class="dropdown-menu" id="shopMenu">
+          <a href="/shop-cbgardn" class="dropdown-brand-link"><span class="brand-dot" style="background:#C9956A"></span>CBGardn</a>
+          <a href="/shop-emptechpro" class="dropdown-brand-link"><span class="brand-dot" style="background:#7B9E87"></span>EmptechPro</a>
+          <a href="/shop-avinichi" class="dropdown-brand-link"><span class="brand-dot" style="background:#9B7BB5"></span>Avinichi</a>
+          <a href="/shop-dermatech" class="dropdown-brand-link"><span class="brand-dot" style="background:#5B8DB8"></span>Derma Tech</a>
+        </div>
+      </div>
+      <a href="/#treatments">Treatments</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <a href="/contact" class="btn-book">Book Now</a>
+  </header>
+  <div class="page-banner">
+    <div>
+      <h1>Shipping Policy</h1>
+      <p>Processing times, rates and delivery information</p>
+    </div>
+  </div>
+  <div class="policy-body">
+    
+<span class="effective-date">Effective Date: January 1, 2024 &nbsp;·&nbsp; Last Updated: January 1, 2024</span>
+
+<p>Mirror Esthetics ships to addresses within the United States. Please review our shipping information below.</p>
+
+<h2>1. Processing Time</h2>
+<p>Orders are processed within <strong>1–3 business days</strong> (Monday–Saturday, excluding holidays). You will receive an email confirmation with tracking information once your order ships.</p>
+
+<h2>2. Shipping Options & Rates</h2>
+<ul>
+  <li><strong>Standard Shipping (5–7 business days)</strong> — $8.99 flat rate; FREE on orders over $150</li>
+  <li><strong>Expedited Shipping (2–3 business days)</strong> — $18.99</li>
+  <li><strong>Overnight Shipping (1 business day)</strong> — $35.00 (order must be placed before 12pm EST)</li>
+</ul>
+
+<h2>3. Delivery Estimates</h2>
+<p>Delivery estimates begin once your order has shipped, not when it is placed. During peak seasons (holidays, promotional events), processing times may be extended by 1–2 business days.</p>
+
+<h2>4. Tracking Your Order</h2>
+<p>Once your order ships, you will receive a tracking number via email. You can track your package directly on the carrier's website. If you have not received tracking information within 5 business days of ordering, please contact us.</p>
+
+<h2>5. Address Accuracy</h2>
+<p>Please ensure your shipping address is accurate at checkout. Mirror Esthetics is not responsible for packages delivered to an incorrect address provided by the customer. If you need to update your address, contact us immediately at <a href="mailto:Mirrorestheticsg1@gmail.com">Mirrorestheticsg1@gmail.com</a> — we can only make changes before the order ships.</p>
+
+<h2>6. Lost or Stolen Packages</h2>
+<p>Once a package is marked as delivered by the carrier, Mirror Esthetics is not responsible for lost or stolen packages. Please contact your local carrier or file a claim with them directly. We recommend selecting shipping with signature confirmation for high-value orders.</p>
+
+<h2>7. Damaged Packages</h2>
+<p>If your package arrives damaged, please take photos and contact us within 48 hours at <a href="mailto:Mirrorestheticsg1@gmail.com">Mirrorestheticsg1@gmail.com</a>. We will work with the carrier to resolve the issue and arrange a replacement if necessary.</p>
+
+<h2>8. Affirm & Financing Orders</h2>
+<p>Orders financed through Affirm follow the same shipping policies as all other orders. Affirm financing approval does not affect shipping timelines.</p>
+
+<h2>9. In-Store Pickup</h2>
+<p>In-store pickup is available at our Gainesville location:<br/><strong>6419 W Newberry Rd, Gainesville, FL 32605</strong><br/>Hours: Monday–Saturday, 9am–6pm. Select "In-Store Pickup" at checkout and we will notify you when your order is ready.</p>
+
+<h2>10. Contact Us</h2>
+<p>Mirror Esthetics<br/>6419 W Newberry Rd, Gainesville, FL 32605<br/>Phone: (352) 224-8201<br/>Email: <a href="mailto:Mirrorestheticsg1@gmail.com">Mirrorestheticsg1@gmail.com</a></p>
+
+  </div>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo">Mirror <span>Esthetics</span></a>
+        <p>Premium skincare studio in Gainesville, FL. Where radiant beauty meets the art and science of skin wellness.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">f</a><a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">ig</a><a href="#" class="social-btn">yt</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="/shop-cbgardn">CBGardn</a>
+        <a href="/shop-emptechpro">EmptechPro</a>
+        <a href="/shop-avinichi">Avinichi</a>
+        <a href="/shop-dermatech">Derma Tech</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about">Our Story</a>
+        <a href="/#treatments">Treatments</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="footer-contact footer-col">
+        <h4>Visit Us</h4>
+        <p><span>📍</span>6419 W Newberry Rd, Gainesville, FL 32605</p>
+        <p><span>📞</span>(352) 224-8201</p>
+        <p><span>✉️</span>Mirrorestheticsg1@gmail.com</p>
+        <p><span>🕙</span>Sun: 11AM–6PM</p><p><span style="opacity:0">🕙</span>Mon–Thu: 10AM–7PM</p><p><span style="opacity:0">🕙</span>Fri: 10AM–5PM &nbsp;|&nbsp; Sat: Closed</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Mirror Esthetics. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="/shipping">Shipping Policy</a>
+        <a href="/refund">Refund Policy</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+  function toggleShopMenu(e){e.stopPropagation();var m=document.getElementById('shopMenu');if(m)m.classList.toggle('is-open');}
+  document.addEventListener('click',function(e){var d=document.getElementById('shopDropdown');var m=document.getElementById('shopMenu');if(m&&d&&!d.contains(e.target))m.classList.remove('is-open');});
+  </script>
+</body>
+</html>
