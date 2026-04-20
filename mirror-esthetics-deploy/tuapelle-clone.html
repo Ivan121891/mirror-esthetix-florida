@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Affirm SDK -->
+  <script>
+    var _affirm_config = {
+      public_api_key: "QZKKS6VZ3VQ4KV2B",
+      script: "https://cdn1.affirm.com/js/v2/affirm.js"
+    };
+    (function(m,gen,i,u,s,a,f,c){
+      var b=u[m]||{},p=document.createElement(s),e=document.getElementsByTagName(s)[0];
+      p.async=!0;p.src=i+u.v;
+      a[m]=function(){a[m].q.push(arguments);};a[m].q=a[m].q||[];
+      a[m].l=1*new Date();
+      for(var d=0;d<f.length;d++)b[f[d]]=b[f[d]]||a[m];
+      e.parentNode.insertBefore(p,e);
+      delete u.v;
+    })("affirm",window,"https://cdn1.affirm.com/js/v2/affirm.js",_affirm_config,"script",window,[])
+  </script>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
   <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
   <link rel="apple-touch-icon" sizes="192x192" href="data:image/png;base64,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"/>
@@ -1090,7 +1106,7 @@
           <p>Customized facials using advanced formulas to deeply cleanse, hydrate, and restore your skin's natural radiance. Each session is tailored to your unique skin type and concerns.</p>
           <div class="service-footer">
             <span class="service-price">$150</span>
-            <span class="service-affirm">As low as $15/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="15000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-view-details" onclick="openSV('Signature Facial')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
@@ -1108,7 +1124,7 @@
           <p>Non-invasive body contouring treatments that shape and tone for lasting, visible results — no surgery, no downtime, just a more confident you.</p>
           <div class="service-footer">
             <span class="service-price">$280</span>
-            <span class="service-affirm">As low as $28/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="28000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-view-details" onclick="openSV('Body Sculpting')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
@@ -1126,7 +1142,7 @@
           <p>Targeted therapies combining peptides, retinoids, and collagen-boosting actives to reduce fine lines, firm skin, and restore youthful vitality and elasticity.</p>
           <div class="service-footer">
             <span class="service-price">$220</span>
-            <span class="service-affirm">As low as $22/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="22000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-view-details" onclick="openSV('Anti-Aging Treatment')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
@@ -1144,7 +1160,7 @@
           <p>One-on-one consultations with our skincare specialists. We analyze your skin, understand your goals, and build a perfectly personalized treatment and product routine.</p>
           <div class="service-footer">
             <span class="service-price">$80</span>
-            <span class="service-affirm">As low as $8/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="8000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-view-details" onclick="openSV('Expert Skin Consultation')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
@@ -1162,7 +1178,7 @@
           <p>Deep-moisture infusion treatments that replenish your skin barrier from within, leaving skin visibly dewy, plump, and radiantly glowing — ideal for dry or stressed skin.</p>
           <div class="service-footer">
             <span class="service-price">$175</span>
-            <span class="service-affirm">As low as $18/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="17500" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-view-details" onclick="openSV('Hydration Therapy')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
@@ -1180,7 +1196,7 @@
           <p>A full-treatment session featuring our curated luxury skincare line — cleanse, exfoliate, serum, and moisturize with science-backed premium formulas.</p>
           <div class="service-footer">
             <span class="service-price">$195</span>
-            <span class="service-affirm">As low as $20/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="19500" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-view-details" onclick="openSV('Premium Skincare Session')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
@@ -1198,7 +1214,7 @@
           <p>Professional makeup artistry services for weddings, events, photoshoots, and everyday flawless looks — crafted to enhance your natural beauty and confidence.</p>
           <div class="service-footer">
             <span class="service-price">$120</span>
-            <span class="service-affirm">As low as $12/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="12000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-view-details" onclick="openSV('Beauty & Makeup')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
@@ -1216,7 +1232,7 @@
           <p>Nourishing scalp treatments and restorative hair therapies that stimulate healthy growth, restore balance, and bring back your hair's natural volume and shine.</p>
           <div class="service-footer">
             <span class="service-price">$135</span>
-            <span class="service-affirm">As low as $14/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="13500" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-view-details" onclick="openSV('Scalp & Hair Care')" style="margin-top:.5rem;width:100%">View Details</button>
             <a href="/contact" class="btn-book-service">Book Now</a>
           </div>
@@ -1578,16 +1594,41 @@
       if(!ok){alert('Please fill in all required fields.');return;}
       renderOrderSummary('-2'); showStep(2);
     } else if(coStep===2){
-      if(coPayMethod==='card'){
-        var cn=document.getElementById('co-card');
-        var ce=document.getElementById('co-exp');
-        var cv=document.getElementById('co-cvv');
-        var cc=document.getElementById('co-cname');
-        if(!cn||cn.value.replace(/\s/g,'').length<13){alert('Please enter a valid card number.');return;}
-        if(!ce||ce.value.length<4){alert('Please enter a valid expiry date.');return;}
-        if(!cv||cv.value.length<3){alert('Please enter a valid CVV.');return;}
-        if(!cc||!cc.value.trim()){alert('Please enter the name on your card.');return;}
+      if(coPayMethod==='affirm'){
+        var cart=getCart();
+        var sub=getSubtotal(cart);
+        var fname_=document.getElementById('co-fname');
+        var lname_=document.getElementById('co-lname');
+        var addr=document.getElementById('co-addr');
+        var city=document.getElementById('co-city');
+        var state=document.getElementById('co-state');
+        var zip=document.getElementById('co-zip');
+        var email_=document.getElementById('co-email');
+        var phone=document.getElementById('co-phone');
+        affirm.checkout({
+          merchant:{public_api_key:"QZKKS6VZ3VQ4KV2B",user_cancel_url:"https://mirrorestheticsfl.com/",user_confirmation_url:"https://mirrorestheticsfl.com/",user_confirmation_url_action:"GET",name:"Mirror Esthetics"},
+          shipping:{name:{first:fname_?fname_.value:'',last:lname_?lname_.value:''},address:{line1:addr?addr.value:'',city:city?city.value:'',state:state?state.value:'',zipcode:zip?zip.value:'',country:"USA"},email:email_?email_.value:''},
+          billing:{name:{first:fname_?fname_.value:'',last:lname_?lname_.value:''},address:{line1:addr?addr.value:'',city:city?city.value:'',state:state?state.value:'',zipcode:zip?zip.value:'',country:"USA"},email:email_?email_.value:''},
+          items:cart.map(function(item){return {display_name:item.name,sku:item.name.replace(/\s+/g,'-').toLowerCase(),unit_price:Math.round(numPrice(item.price)*100),qty:item.qty,item_image_url:"https://mirrorestheticsfl.com/favicon-192.png",item_url:"https://mirrorestheticsfl.com/"};}),
+          metadata:{shipping_type:"Standard",mode:"modal"},
+          order_id:'ME-'+Math.floor(10000+Math.random()*90000),
+          shipping_amount:1500,tax_amount:0,
+          total:Math.round((sub+15)*100)
+        });
+        affirm.checkout.open({
+          onFail:function(){alert('Affirm checkout was cancelled. Please try again or pay by card.');},
+          onSuccess:function(){saveCart([]);showStep(3);}
+        });
+        return;
       }
+      var cn=document.getElementById('co-card');
+      var ce=document.getElementById('co-exp');
+      var cv=document.getElementById('co-cvv');
+      var cc=document.getElementById('co-cname');
+      if(!cn||cn.value.replace(/\s/g,'').length<13){alert('Please enter a valid card number.');return;}
+      if(!ce||ce.value.length<4){alert('Please enter a valid expiry date.');return;}
+      if(!cv||cv.value.length<3){alert('Please enter a valid CVV.');return;}
+      if(!cc||!cc.value.trim()){alert('Please enter the name on your card.');return;}
       placeOrderFinal();
     }
   };
@@ -1898,6 +1939,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(window.c
 
   document.addEventListener('keydown', function(e){if(e.key==='Escape'){closePD&&closePD();closeSV&&closeSV();}});
 
+
+  // Refresh Affirm promo widgets after DOM ready
+  document.addEventListener('DOMContentLoaded', function(){ if(typeof affirm !== 'undefined' && affirm.ui){ affirm.ui.refresh(); } });
 </script>
 
 

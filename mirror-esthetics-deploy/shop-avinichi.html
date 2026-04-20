@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Affirm SDK -->
+  <script>
+    var _affirm_config = {
+      public_api_key: "QZKKS6VZ3VQ4KV2B",
+      script: "https://cdn1.affirm.com/js/v2/affirm.js"
+    };
+    (function(m,gen,i,u,s,a,f,c){
+      var b=u[m]||{},p=document.createElement(s),e=document.getElementsByTagName(s)[0];
+      p.async=!0;p.src=i+u.v;
+      a[m]=function(){a[m].q.push(arguments);};a[m].q=a[m].q||[];
+      a[m].l=1*new Date();
+      for(var d=0;d<f.length;d++)b[f[d]]=b[f[d]]||a[m];
+      e.parentNode.insertBefore(p,e);
+      delete u.v;
+    })("affirm",window,"https://cdn1.affirm.com/js/v2/affirm.js",_affirm_config,"script",window,[])
+  </script>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
   <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
   <link rel="apple-touch-icon" sizes="192x192" href="data:image/png;base64,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"/>
@@ -371,7 +387,7 @@
           <p>Clinically proven lifting serum that visibly firms and tightens skin for a more youthful contour.</p>
           <div class="product-footer">
             <span class="product-price">$480</span>
-            <span class="affirm-monthly">As low as $46/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="48000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Age Defy Lifting Serum','$480','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Age Defy Lifting Serum')">View Details</button>
           </div>
@@ -388,7 +404,7 @@
           <p>Stabilized vitamin C serum that fades dark spots, evens skin tone and boosts natural collagen.</p>
           <div class="product-footer">
             <span class="product-price">$420</span>
-            <span class="affirm-monthly">As low as $40/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="42000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Vita-C Brightening Serum','$420','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Vita-C Brightening Serum')">View Details</button>
           </div>
@@ -405,7 +421,7 @@
           <p>Overnight repair serum packed with retinol and peptides to resurface and renew skin while you sleep.</p>
           <div class="product-footer">
             <span class="product-price">$390</span>
-            <span class="affirm-monthly">As low as $37/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="39000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Replenishing Night Serum','$390','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Replenishing Night Serum')">View Details</button>
           </div>
@@ -422,7 +438,7 @@
           <p>Luxurious restorative crème with stem cells and growth factors to rejuvenate mature and damaged skin.</p>
           <div class="product-footer">
             <span class="product-price">$520</span>
-            <span class="affirm-monthly">As low as $50/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="52000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Bio-Restorative Crème','$520','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Bio-Restorative Crème')">View Details</button>
           </div>
@@ -439,7 +455,7 @@
           <p>Advanced lifting eye treatment that reduces bags, dark circles and crow's feet in just 4 weeks.</p>
           <div class="product-footer">
             <span class="product-price">$350</span>
-            <span class="affirm-monthly">As low as $34/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="35000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('ProLift Eye Treatment','$350','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('ProLift Eye Treatment')">View Details</button>
           </div>
@@ -456,7 +472,7 @@
           <p>Intensive overnight mask with hyaluronic acid and peptides for deeply plumped skin by morning.</p>
           <div class="product-footer">
             <span class="product-price">$310</span>
-            <span class="affirm-monthly">As low as $30/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="31000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Midnight Renewal Mask','$310','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Midnight Renewal Mask')">View Details</button>
           </div>
@@ -473,7 +489,7 @@
           <p>Nature-inspired purifying mask that detoxifies pores and restores skin balance for a clear complexion.</p>
           <div class="product-footer">
             <span class="product-price">$280</span>
-            <span class="affirm-monthly">As low as $27/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="28000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('BioLeaf Purifying Mask','$280','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('BioLeaf Purifying Mask')">View Details</button>
           </div>
@@ -490,7 +506,7 @@
           <p>Gentle resurfacing peel with AHAs and BHAs to smooth texture, unclog pores and reveal brighter skin.</p>
           <div class="product-footer">
             <span class="product-price">$260</span>
-            <span class="affirm-monthly">As low as $25/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="26000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Microexfoliant Peel','$260','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Microexfoliant Peel')">View Details</button>
           </div>
@@ -507,7 +523,7 @@
           <p>Deep-pore purifying mask with kaolin clay and charcoal to absorb excess oil and clear congestion.</p>
           <div class="product-footer">
             <span class="product-price">$240</span>
-            <span class="affirm-monthly">As low as $23/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="24000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Purifying Clay Mask','$240','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Purifying Clay Mask')">View Details</button>
           </div>
@@ -524,7 +540,7 @@
           <p>pH-balanced cleanser that gently removes makeup and impurities while maintaining skin moisture.</p>
           <div class="product-footer">
             <span class="product-price">$195</span>
-            <span class="affirm-monthly">As low as $19/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="19500" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Facial Cleanser','$195','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Facial Cleanser')">View Details</button>
           </div>
@@ -541,7 +557,7 @@
           <p>Exfoliating toner with glycolic acid and niacinamide to refine pores and even skin tone.</p>
           <div class="product-footer">
             <span class="product-price">$220</span>
-            <span class="affirm-monthly">As low as $21/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="22000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Brightening Toner','$220','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Brightening Toner')">View Details</button>
           </div>
@@ -558,7 +574,7 @@
           <p>Lightweight daily moisturizer with SPF 50 PA+++ protecting against UVA/UVB and blue light damage.</p>
           <div class="product-footer">
             <span class="product-price">$275</span>
-            <span class="affirm-monthly">As low as $26/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="27500" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('SPF 50 Daily Moisturizer','$275','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('SPF 50 Daily Moisturizer')">View Details</button>
           </div>
@@ -575,7 +591,7 @@
           <p>Ultra-silky serum that purifies, tightens and smooths skin texture for a porcelain-like finish.</p>
           <div class="product-footer">
             <span class="product-price">$360</span>
-            <span class="affirm-monthly">As low as $34/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="36000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Silk Purifier Serum','$360','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Silk Purifier Serum')">View Details</button>
           </div>
@@ -592,7 +608,7 @@
           <p>Rich nourishing night crème that deeply moisturizes and restores skin elasticity while you sleep.</p>
           <div class="product-footer">
             <span class="product-price">$430</span>
-            <span class="affirm-monthly">As low as $41/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="43000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Luminous Night Crème','$430','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Luminous Night Crème')">View Details</button>
           </div>
@@ -609,7 +625,7 @@
           <p>Deeply nourishing body butter with shea, mango and noni to soften and hydrate dry skin.</p>
           <div class="product-footer">
             <span class="product-price">$185</span>
-            <span class="affirm-monthly">As low as $18/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="18500" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Noni Body Butter','$185','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Noni Body Butter')">View Details</button>
           </div>
@@ -626,7 +642,7 @@
           <p>Fast-absorbing body lotion with noni and vitamin E to keep skin soft and supple all day.</p>
           <div class="product-footer">
             <span class="product-price">$155</span>
-            <span class="affirm-monthly">As low as $15/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="15500" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Noni Body Lotion','$155','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Noni Body Lotion')">View Details</button>
           </div>
@@ -643,7 +659,7 @@
           <p>Exfoliating body scrub with noni and sugar crystals to reveal smooth, glowing skin.</p>
           <div class="product-footer">
             <span class="product-price">$165</span>
-            <span class="affirm-monthly">As low as $16/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="16500" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Noni Body Scrub','$165','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Noni Body Scrub')">View Details</button>
           </div>
@@ -660,7 +676,7 @@
           <p>Luxurious curated gift set featuring our best-selling gold-infused collection for the ultimate skincare ritual.</p>
           <div class="product-footer">
             <span class="product-price">$890</span>
-            <span class="affirm-monthly">As low as $85/mo with <span class="affirm-logo">affirm</span></span>
+            <p class="affirm-as-low-as" data-amount="89000" data-affirm-color="blue" data-learnmore-show="true"></p>
             <button class="btn-add" onclick="addToCart('Gold Collection Gift Set','$890','Avinichi')">Add to Cart</button>
             <button class="btn-view-details" onclick="openPD('Gold Collection Gift Set')">View Details</button>
           </div>
@@ -1043,17 +1059,70 @@
       renderOrderSummary('-2');
       showStep(2);
     } else if(coStep===2){
-      if(coPayMethod==='card'){
-        // validate card fields
-        var cn=document.getElementById('co-card');
-        var ce=document.getElementById('co-exp');
-        var cv=document.getElementById('co-cvv');
-        var cc=document.getElementById('co-cname');
-        if(!cn||cn.value.replace(/\s/g,'').length<13){alert('Please enter a valid card number.');return;}
-        if(!ce||ce.value.length<4){alert('Please enter a valid expiry date.');return;}
-        if(!cv||cv.value.length<3){alert('Please enter a valid CVV.');return;}
-        if(!cc||!cc.value.trim()){alert('Please enter the name on your card.');return;}
+      if(coPayMethod==='affirm'){
+        // Launch real Affirm checkout
+        var cart=getCart();
+        var sub=getSubtotal(cart);
+        var fname=document.getElementById('co-fname');
+        var lname=document.getElementById('co-lname');
+        var addr=document.getElementById('co-addr');
+        var city=document.getElementById('co-city');
+        var state=document.getElementById('co-state');
+        var zip=document.getElementById('co-zip');
+        var email=document.getElementById('co-email');
+        var phone=document.getElementById('co-phone');
+        var checkoutData={
+          merchant:{
+            public_api_key:"QZKKS6VZ3VQ4KV2B",
+            user_cancel_url:"https://mirrorestheticsfl.com/",
+            user_confirmation_url:"https://mirrorestheticsfl.com/",
+            user_confirmation_url_action:"GET",
+            name:"Mirror Esthetics"
+          },
+          shipping:{
+            name:{first:fname?fname.value:'',last:lname?lname.value:''},
+            address:{line1:addr?addr.value:'',city:city?city.value:'',state:state?state.value:'',zipcode:zip?zip.value:'',country:"USA"},
+            phone_number:phone?phone.value.replace(/\D/g,''):'',
+            email:email?email.value:''
+          },
+          billing:{
+            name:{first:fname?fname.value:'',last:lname?lname.value:''},
+            address:{line1:addr?addr.value:'',city:city?city.value:'',state:state?state.value:'',zipcode:zip?zip.value:'',country:"USA"},
+            phone_number:phone?phone.value.replace(/\D/g,''):'',
+            email:email?email.value:''
+          },
+          items:cart.map(function(item){
+            return {
+              display_name:item.name,
+              sku:item.name.replace(/\s+/g,'-').toLowerCase(),
+              unit_price:Math.round(numPrice(item.price)*100),
+              qty:item.qty,
+              item_image_url:"https://mirrorestheticsfl.com/favicon-192.png",
+              item_url:"https://mirrorestheticsfl.com/"
+            };
+          }),
+          metadata:{shipping_type:"Standard",mode:"modal"},
+          order_id:'ME-'+Math.floor(10000+Math.random()*90000),
+          shipping_amount:1500,
+          tax_amount:0,
+          total:Math.round((sub+15)*100)
+        };
+        affirm.checkout(checkoutData);
+        affirm.checkout.open({
+          onFail:function(){ alert('Affirm checkout was cancelled. Please try again or pay by card.'); },
+          onSuccess:function(a){ saveCart([]); showStep(3); }
+        });
+        return;
       }
+      // Card payment validation
+      var cn=document.getElementById('co-card');
+      var ce=document.getElementById('co-exp');
+      var cv=document.getElementById('co-cvv');
+      var cc=document.getElementById('co-cname');
+      if(!cn||cn.value.replace(/\s/g,'').length<13){alert('Please enter a valid card number.');return;}
+      if(!ce||ce.value.length<4){alert('Please enter a valid expiry date.');return;}
+      if(!cv||cv.value.length<3){alert('Please enter a valid CVV.');return;}
+      if(!cc||!cc.value.trim()){alert('Please enter the name on your card.');return;}
       placeOrderFinal();
     }
   };
@@ -1249,6 +1318,9 @@
 })();
 function toggleShopMenu(e){e.stopPropagation();var m=document.getElementById('shopMenu');if(m)m.classList.toggle('is-open');}
 document.addEventListener('click',function(e){var d=document.getElementById('shopDropdown');var m=document.getElementById('shopMenu');if(m&&d&&!d.contains(e.target))m.classList.remove('is-open');});
+
+  // Refresh Affirm promo widgets after DOM ready
+  document.addEventListener('DOMContentLoaded', function(){ if(typeof affirm !== 'undefined' && affirm.ui){ affirm.ui.refresh(); } });
 </script>
 
 <!-- Product Detail Modal -->
