@@ -946,9 +946,7 @@
             onSuccess: function(a){ saveCart([]); showStep(3); }
           });
         } catch(e) {
-          alert('Affirm could not open. Please try again or choose Credit / Debit Card.
-
-Error: ' + e.message);
+          alert('Affirm could not open. Please try again or choose Credit / Debit Card. Error: ' + e.message);
         }
         return;
       }
