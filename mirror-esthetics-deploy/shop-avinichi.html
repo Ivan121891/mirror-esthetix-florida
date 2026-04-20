@@ -7,15 +7,13 @@
       public_api_key: "QZKKS6VZ3VQ4KV2B",
       script: "https://cdn1.affirm.com/js/v2/affirm.js"
     };
-    (function(m,gen,i,u,s,a,f,c){
-      var b=u[m]||{},p=document.createElement(s),e=document.getElementsByTagName(s)[0];
-      p.async=!0;p.src=i+u.v;
-      a[m]=function(){a[m].q.push(arguments);};a[m].q=a[m].q||[];
-      a[m].l=1*new Date();
-      for(var d=0;d<f.length;d++)b[f[d]]=b[f[d]]||a[m];
-      e.parentNode.insertBefore(p,e);
-      delete u.v;
-    })("affirm",window,"https://cdn1.affirm.com/js/v2/affirm.js",_affirm_config,"script",window,[])
+    (function(l,g,m,e,a,f,b){
+      var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};
+      c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);
+      a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);
+      a=0;for(b=["get","token","url","items"].split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);
+      h.async=!0;h.src=g[c[m]];n.parentNode.insertBefore(h,n);delete g[m];l[e]=c;
+    })(window,_affirm_config,"script","affirm","checkout","SCRIPT","ready");
   </script>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
   <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,AAABAAEAEBAAAAAAIACyAQAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAXlJREFUeJxjYKAQMMIYXuYa/0nRuO3kDUYGBgYGJnI0I+thIlUjOqDYAAYGBgaG43u3/P/99d3/XRuW/fcy1/jvZ637/8XDm/9/f333f2p7zf+D29f9//31HRy/e37/P4oX+toaGL68e/3Zwdn1b4yX9WZ7FzeGXz9/Mnx8/uCJCd+7yoOrZp5gYGBguLt38cJzC2oqP989vbss3LaZgYGBgQXmivVrVnEGh4V/svMIELpw78XPhzcuftTQ0mJ8/Oqj/OmbTywYGBgYlJ1j4xkYGBiSwgMYtCW5mFHC4M+f3/+3rpj7XFTT3OLd7TMnudhZv/74+YcT2aswF7SUZe28cOe5MUYYdGUHnsoPtr5+cVnzdJh/z26ceRg9DH5+fvO/Ldl9PwMDNCF5mWv8j3LSX6gqI3yje+Xhmm8/f3NLCfM+SfU2ncrAwMCw/dQtPwVxwXua8qJXYJb+//+fySJnehvcAHJib9vJG4wDn5CYYE4hVSM5erACABVpyoXGfD+lAAAAAElFTkSuQmCC"/>
@@ -1107,11 +1105,21 @@
           tax_amount:0,
           total:Math.round((sub+15)*100)
         };
-        affirm.checkout(checkoutData);
-        affirm.checkout.open({
-          onFail:function(){ alert('Affirm checkout was cancelled. Please try again or pay by card.'); },
-          onSuccess:function(a){ saveCart([]); showStep(3); }
-        });
+        if(typeof affirm === 'undefined' || typeof affirm.checkout !== 'function'){
+          alert('Affirm is loading, please wait a moment and try again.');
+          return;
+        }
+        try {
+          affirm.checkout(checkoutData);
+          affirm.checkout.open({
+            onFail: function(){ alert('Affirm checkout was cancelled. Please try again or choose Credit / Debit Card.'); },
+            onSuccess: function(a){ saveCart([]); showStep(3); }
+          });
+        } catch(e) {
+          alert('Affirm could not open. Please try again or choose Credit / Debit Card.
+
+Error: ' + e.message);
+        }
         return;
       }
       // Card payment validation
